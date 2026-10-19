@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="NetArchTest.Rules" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <!--
+    Repository paths for the source-scanning guards, baked in here so they cannot drift. Resolving
+    them at run time meant walking up from the test binary; when that walk missed, the scanners
+    silently had nothing to scan and passed. See SourcePaths.
+  -->
+  <ItemGroup>
+    <AssemblyMetadata
+      Include="RepositoryRoot"
+      Value="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)../../..'))"
+    />
+    <AssemblyMetadata
+      Include="BackendRoot"
+      Value="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)../..'))"
+    />
+    <AssemblyMetadata
+      Include="BackendSourceRoot"
+      Value="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)../../src'))"
+    />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Core.Application\Core.Application.csproj" />
+    <ProjectReference Include="..\..\src\Core.Domain\Core.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure.Database\Infrastructure.Database.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure.ExternalServices\Infrastructure.ExternalServices.csproj" />
+    <ProjectReference Include="..\..\src\Presentation.WebApi\Presentation.WebApi.csproj" />
+  </ItemGroup>
+</Project>

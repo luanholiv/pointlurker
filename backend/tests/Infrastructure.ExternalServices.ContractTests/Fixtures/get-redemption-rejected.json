@@ -1,0 +1,23 @@
+{
+  "_id": "69a595406f7bf684bcf63750",
+  "channel": "5ea766d578edd899791c1eb8",
+  "redeemerType": "Channel",
+  "redeemer": {
+    "_id": "5fa01b6721737924e36aa7f7",
+    "avatar": "https://static-cdn.jtvnw.net/jtv_user_pictures/b998defd-863b-4ea7-913c-f96e91af7ce8-profile_image-300x300.png",
+    "username": "luanholiv",
+    "inactive": false,
+    "isPartner": true
+  },
+  "item": {
+    "_id": "5ecede07db1d069c8feacee2",
+    "name": "AK-47 | Slate",
+    "userInput": ["Trade link", "Confirma?"]
+  },
+  "completed": false,
+  "source": "website",
+  "input": ["test@email.com", "John Doe"],
+  "createdAt": "2026-03-02T13:48:48.043Z",
+  "updatedAt": "2026-03-02T13:48:48.043Z",
+  "rejected": true
+}

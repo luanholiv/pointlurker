@@ -1,0 +1,18 @@
+<Project>
+  <!-- Coverlet instruments a module by rewriting it with Mono.Cecil, which has to resolve every type
+       referenced from a custom-attribute blob. [LoggerMessage(Level = LogLevel.X, ...)] references the
+       LogLevel enum in Microsoft.Extensions.Logging.Abstractions — a shared-framework assembly, so it
+       is never copied next to a project's output. With nothing to resolve against, Cecil throws and
+       coverlet abandons the whole module, restores the original binary and carries on: exit code 0,
+       every test green, and the layer simply missing from the coverage report. The warning it writes
+       reaches only the diagnostic log, never the console, not even at verbosity=detailed.
+
+       Set here rather than in Directory.Build.props because IsTestProject is defined by
+       Microsoft.NET.Test.Sdk.props, which NuGet imports after Directory.Build.props.
+
+       The condition is load-bearing. PreserveCompilationContext publishes a ~13 MB refs/ folder, which
+       on a src/ project would be bundled into the self-contained single-file backend image. -->
+  <PropertyGroup Condition="'$(IsTestProject)' == 'true'">
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+  </PropertyGroup>
+</Project>

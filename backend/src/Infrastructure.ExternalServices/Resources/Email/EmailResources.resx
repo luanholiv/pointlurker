@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="xml:space" use="optional" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="Email.AvailabilityNotification.Brand.Name" xml:space="preserve">
+    <value>PointLurker</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Brand.Sub" xml:space="preserve">
+    <value>Console</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Subject.One" xml:space="preserve">
+    <value>PointLurker: 1 item became available</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Subject.Other" xml:space="preserve">
+    <value>PointLurker: {0} items became available</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Preheader.One" xml:space="preserve">
+    <value>1 item is ready to redeem.</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Preheader.Other" xml:space="preserve">
+    <value>{0} items are ready to redeem.</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Body.Intro" xml:space="preserve">
+    <value>Items became available!</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Kpi.Items.One" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Kpi.Items.Other" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Kpi.Stores.One" xml:space="preserve">
+    <value>Store</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Kpi.Stores.Other" xml:space="preserve">
+    <value>Stores</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Kpi.AutoRedeeming" xml:space="preserve">
+    <value>Auto-redeeming</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Cta.ViewWishlist" xml:space="preserve">
+    <value>View wishlist</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Item.Points" xml:space="preserve">
+    <value>pts</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Item.Available" xml:space="preserve">
+    <value>Available</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Item.SubOnly" xml:space="preserve">
+    <value>Sub Only</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Item.Stock" xml:space="preserve">
+    <value>Stock: {0} / {1}</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Item.AutoRedeemPending" xml:space="preserve">
+    <value>Auto-redeem pending</value>
+  </data>
+  <data name="Email.FulfillmentCode.Subject" xml:space="preserve">
+    <value>Your gift-card code for {0}</value>
+  </data>
+  <data name="Email.FulfillmentCode.Preheader" xml:space="preserve">
+    <value>{0} from {1} was redeemed. Your code is inside.</value>
+  </data>
+  <data name="Email.FulfillmentCode.Body.Intro" xml:space="preserve">
+    <value>Your code is ready</value>
+  </data>
+  <data name="Email.FulfillmentCode.Body.Detail" xml:space="preserve">
+    <value>{0} was redeemed from {1}.</value>
+  </data>
+  <data name="Email.FulfillmentCode.Code.Label" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Email.FulfillmentCode.Body.Keep" xml:space="preserve">
+    <value>Treat it like cash: anyone holding this code can use it. This email is the only copy you will receive. PointLurker keeps an encrypted copy that it never displays.</value>
+  </data>
+  <data name="Email.FulfillmentCode.Cta.ViewRedemptions" xml:space="preserve">
+    <value>View redemptions</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expiring.Subject" xml:space="preserve">
+    <value>Your {0} sign-in expires soon</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expiring.Preheader" xml:space="preserve">
+    <value>Auto-redeem for {0} stops on {1} UTC unless you replace the credential.</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expiring.Intro" xml:space="preserve">
+    <value>Your {0} sign-in expires soon</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expiring.Detail" xml:space="preserve">
+    <value>The {0} credential stored in PointLurker stops working on {1} UTC. From then on, auto-redeem for {0} is paused until you replace it.</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expired.Subject" xml:space="preserve">
+    <value>Your {0} sign-in has expired</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expired.Preheader" xml:space="preserve">
+    <value>Auto-redeem for {0} is paused until you replace the credential.</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expired.Intro" xml:space="preserve">
+    <value>Your {0} sign-in has expired</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expired.Detail" xml:space="preserve">
+    <value>The {0} credential stored in PointLurker stopped working on {1} UTC. Auto-redeem for {0} is paused until you replace it.</value>
+  </data>
+  <data name="Email.CredentialExpiry.Action" xml:space="preserve">
+    <value>Sign in to {0} again, copy the new credential and paste it on the Settings page.</value>
+  </data>
+  <data name="Email.CredentialExpiry.Cta.OpenSettings" xml:space="preserve">
+    <value>Open settings</value>
+  </data>
+</root>

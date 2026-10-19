@@ -1,0 +1,19 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "urlPath": "/kappa/v2/store/e2e-bulk-channel-id/items",
+    "queryParameters": {
+      "source": {
+        "equalTo": "website"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "store-items-bulk-response.json"
+  }
+}

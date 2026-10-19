@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/kappa/v2/store/[^/]+/items",
+    "queryParameters": {
+      "source": { "equalTo": "website" }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "bodyFileName": "store-items-response.json"
+  }
+}

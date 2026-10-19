@@ -1,0 +1,10 @@
+# Single-purpose config: the constructor-style rule and nothing else.
+# The full style ruleset (IDE0130, using ordering, naming, ...) is a separate, tracked change.
+# Deliberately no `root = true`, so a future repository-root .editorconfig still applies.
+#
+# Scoped to src/ only: test fixtures legitimately assign injected xUnit fixtures to fields.
+# EnforceCodeStyleInBuild + TreatWarningsAsErrors (Directory.Build.props) make this a build error.
+
+[src/**/*.cs]
+csharp_style_prefer_primary_constructors = true
+dotnet_diagnostic.IDE0290.severity = warning

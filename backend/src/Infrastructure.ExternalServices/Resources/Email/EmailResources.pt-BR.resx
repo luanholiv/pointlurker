@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="xml:space" use="optional" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="Email.AvailabilityNotification.Brand.Name" xml:space="preserve">
+    <value>PointLurker</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Brand.Sub" xml:space="preserve">
+    <value>Console</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Subject.One" xml:space="preserve">
+    <value>PointLurker: 1 item ficou disponível</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Subject.Other" xml:space="preserve">
+    <value>PointLurker: {0} itens ficaram disponíveis</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Preheader.One" xml:space="preserve">
+    <value>1 item pronto para resgate.</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Preheader.Other" xml:space="preserve">
+    <value>{0} itens prontos para resgate.</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Body.Intro" xml:space="preserve">
+    <value>Itens ficaram disponíveis!</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Kpi.Items.One" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Kpi.Items.Other" xml:space="preserve">
+    <value>Itens</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Kpi.Stores.One" xml:space="preserve">
+    <value>Loja</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Kpi.Stores.Other" xml:space="preserve">
+    <value>Lojas</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Kpi.AutoRedeeming" xml:space="preserve">
+    <value>Auto-resgate</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Cta.ViewWishlist" xml:space="preserve">
+    <value>Ver lista de desejos</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Item.Points" xml:space="preserve">
+    <value>pts</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Item.Available" xml:space="preserve">
+    <value>Disponível</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Item.SubOnly" xml:space="preserve">
+    <value>Só sub</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Item.Stock" xml:space="preserve">
+    <value>Estoque: {0} / {1}</value>
+  </data>
+  <data name="Email.AvailabilityNotification.Item.AutoRedeemPending" xml:space="preserve">
+    <value>Auto-resgate pendente</value>
+  </data>
+  <data name="Email.FulfillmentCode.Subject" xml:space="preserve">
+    <value>Seu código de gift card de {0}</value>
+  </data>
+  <data name="Email.FulfillmentCode.Preheader" xml:space="preserve">
+    <value>{0} de {1} foi resgatado. Seu código está aqui dentro.</value>
+  </data>
+  <data name="Email.FulfillmentCode.Body.Intro" xml:space="preserve">
+    <value>Seu código chegou</value>
+  </data>
+  <data name="Email.FulfillmentCode.Body.Detail" xml:space="preserve">
+    <value>{0} foi resgatado em {1}.</value>
+  </data>
+  <data name="Email.FulfillmentCode.Code.Label" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="Email.FulfillmentCode.Body.Keep" xml:space="preserve">
+    <value>Trate como dinheiro: quem tiver este código pode usá-lo. Este e-mail é a única cópia que você vai receber. O PointLurker guarda uma cópia criptografada que nunca exibe.</value>
+  </data>
+  <data name="Email.FulfillmentCode.Cta.ViewRedemptions" xml:space="preserve">
+    <value>Ver resgates</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expiring.Subject" xml:space="preserve">
+    <value>Seu login do {0} expira em breve</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expiring.Preheader" xml:space="preserve">
+    <value>O resgate automático do {0} para em {1} UTC se você não substituir a credencial.</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expiring.Intro" xml:space="preserve">
+    <value>Seu login do {0} expira em breve</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expiring.Detail" xml:space="preserve">
+    <value>A credencial do {0} guardada no PointLurker deixa de funcionar em {1} UTC. A partir daí, o resgate automático do {0} fica pausado até você substituí-la.</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expired.Subject" xml:space="preserve">
+    <value>Seu login do {0} expirou</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expired.Preheader" xml:space="preserve">
+    <value>O resgate automático do {0} está pausado até você substituir a credencial.</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expired.Intro" xml:space="preserve">
+    <value>Seu login do {0} expirou</value>
+  </data>
+  <data name="Email.CredentialExpiry.Expired.Detail" xml:space="preserve">
+    <value>A credencial do {0} guardada no PointLurker deixou de funcionar em {1} UTC. O resgate automático do {0} está pausado até você substituí-la.</value>
+  </data>
+  <data name="Email.CredentialExpiry.Action" xml:space="preserve">
+    <value>Entre no {0} de novo, copie a nova credencial e cole-a na página de Configurações.</value>
+  </data>
+  <data name="Email.CredentialExpiry.Cta.OpenSettings" xml:space="preserve">
+    <value>Abrir configurações</value>
+  </data>
+</root>

@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+set -e
+npx lint-staged
+(cd backend && dotnet tool run slopwatch analyze -d . --fail-on warning --stats)
+(cd frontend && npm run format:check && npm run lint && npm run typecheck)

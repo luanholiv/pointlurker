@@ -1,0 +1,2702 @@
+[
+  {
+    "bot": {
+      "identifier": "bulk_item_001",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-001",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 001",
+    "description": "Generated item 001",
+    "type": "perk",
+    "cost": 10,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:01:00.000Z",
+    "updatedAt": "2026-01-02T00:01:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 1,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_002",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-002",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 002",
+    "description": "Generated item 002",
+    "type": "perk",
+    "cost": 20,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:02:00.000Z",
+    "updatedAt": "2026-01-02T00:02:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 2,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_003",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-003",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 003",
+    "description": "Generated item 003",
+    "type": "perk",
+    "cost": 30,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:03:00.000Z",
+    "updatedAt": "2026-01-02T00:03:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 3,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_004",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-004",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 004",
+    "description": "Generated item 004",
+    "type": "perk",
+    "cost": 40,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:04:00.000Z",
+    "updatedAt": "2026-01-02T00:04:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 4,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_005",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-005",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 005",
+    "description": "Generated item 005",
+    "type": "perk",
+    "cost": 50,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:05:00.000Z",
+    "updatedAt": "2026-01-02T00:05:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 5,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_006",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-006",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 006",
+    "description": "Generated item 006",
+    "type": "perk",
+    "cost": 60,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:06:00.000Z",
+    "updatedAt": "2026-01-02T00:06:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 6,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_007",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-007",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 007",
+    "description": "Generated item 007",
+    "type": "perk",
+    "cost": 70,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:07:00.000Z",
+    "updatedAt": "2026-01-02T00:07:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 7,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_008",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-008",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 008",
+    "description": "Generated item 008",
+    "type": "perk",
+    "cost": 80,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:08:00.000Z",
+    "updatedAt": "2026-01-02T00:08:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 8,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_009",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-009",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 009",
+    "description": "Generated item 009",
+    "type": "perk",
+    "cost": 90,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:09:00.000Z",
+    "updatedAt": "2026-01-02T00:09:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 9,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_010",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-010",
+    "subscriberOnly": true,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 010",
+    "description": "Generated item 010",
+    "type": "perk",
+    "cost": 100,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:10:00.000Z",
+    "updatedAt": "2026-01-02T00:10:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 10,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_011",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-011",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 011",
+    "description": "Generated item 011",
+    "type": "perk",
+    "cost": 110,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:11:00.000Z",
+    "updatedAt": "2026-01-02T00:11:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 11,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_012",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-012",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 012",
+    "description": "Generated item 012",
+    "type": "perk",
+    "cost": 120,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:12:00.000Z",
+    "updatedAt": "2026-01-02T00:12:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 12,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_013",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-013",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 013",
+    "description": "Generated item 013",
+    "type": "perk",
+    "cost": 130,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:13:00.000Z",
+    "updatedAt": "2026-01-02T00:13:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 13,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_014",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-014",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 014",
+    "description": "Generated item 014",
+    "type": "perk",
+    "cost": 140,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:14:00.000Z",
+    "updatedAt": "2026-01-02T00:14:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 14,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_015",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-015",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": true,
+    "name": "Bulk Item 015",
+    "description": "Generated item 015",
+    "type": "perk",
+    "cost": 150,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:15:00.000Z",
+    "updatedAt": "2026-01-02T00:15:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 15,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_016",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-016",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 016",
+    "description": "Generated item 016",
+    "type": "perk",
+    "cost": 160,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:16:00.000Z",
+    "updatedAt": "2026-01-02T00:16:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 16,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_017",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-017",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 017",
+    "description": "Generated item 017",
+    "type": "perk",
+    "cost": 170,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:17:00.000Z",
+    "updatedAt": "2026-01-02T00:17:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 17,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_018",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-018",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 018",
+    "description": "Generated item 018",
+    "type": "perk",
+    "cost": 180,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:18:00.000Z",
+    "updatedAt": "2026-01-02T00:18:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 18,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_019",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-019",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 019",
+    "description": "Generated item 019",
+    "type": "perk",
+    "cost": 190,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:19:00.000Z",
+    "updatedAt": "2026-01-02T00:19:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 19,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_020",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-020",
+    "subscriberOnly": true,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 020",
+    "description": "Generated item 020",
+    "type": "perk",
+    "cost": 200,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:20:00.000Z",
+    "updatedAt": "2026-01-02T00:20:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 20,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_021",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-021",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 021",
+    "description": "Generated item 021",
+    "type": "perk",
+    "cost": 210,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:21:00.000Z",
+    "updatedAt": "2026-01-02T00:21:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 21,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_022",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-022",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 022",
+    "description": "Generated item 022",
+    "type": "perk",
+    "cost": 220,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:22:00.000Z",
+    "updatedAt": "2026-01-02T00:22:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 22,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_023",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-023",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 023",
+    "description": "Generated item 023",
+    "type": "perk",
+    "cost": 230,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:23:00.000Z",
+    "updatedAt": "2026-01-02T00:23:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 23,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_024",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-024",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 024",
+    "description": "Generated item 024",
+    "type": "perk",
+    "cost": 240,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:24:00.000Z",
+    "updatedAt": "2026-01-02T00:24:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 24,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_025",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-025",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 025",
+    "description": "Generated item 025",
+    "type": "perk",
+    "cost": 250,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:25:00.000Z",
+    "updatedAt": "2026-01-02T00:25:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 25,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_026",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-026",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 026",
+    "description": "Generated item 026",
+    "type": "perk",
+    "cost": 260,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:26:00.000Z",
+    "updatedAt": "2026-01-02T00:26:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 26,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_027",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-027",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 027",
+    "description": "Generated item 027",
+    "type": "perk",
+    "cost": 270,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:27:00.000Z",
+    "updatedAt": "2026-01-02T00:27:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 27,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_028",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-028",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 028",
+    "description": "Generated item 028",
+    "type": "perk",
+    "cost": 280,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:28:00.000Z",
+    "updatedAt": "2026-01-02T00:28:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 28,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_029",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-029",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 029",
+    "description": "Generated item 029",
+    "type": "perk",
+    "cost": 290,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:29:00.000Z",
+    "updatedAt": "2026-01-02T00:29:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 29,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_030",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-030",
+    "subscriberOnly": true,
+    "userInput": [],
+    "enabled": true,
+    "featured": true,
+    "name": "Bulk Item 030",
+    "description": "Generated item 030",
+    "type": "perk",
+    "cost": 300,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:30:00.000Z",
+    "updatedAt": "2026-01-02T00:30:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 30,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_031",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-031",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 031",
+    "description": "Generated item 031",
+    "type": "perk",
+    "cost": 310,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:31:00.000Z",
+    "updatedAt": "2026-01-02T00:31:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 31,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_032",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-032",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 032",
+    "description": "Generated item 032",
+    "type": "perk",
+    "cost": 320,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:32:00.000Z",
+    "updatedAt": "2026-01-02T00:32:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 32,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_033",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-033",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 033",
+    "description": "Generated item 033",
+    "type": "perk",
+    "cost": 330,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:33:00.000Z",
+    "updatedAt": "2026-01-02T00:33:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 33,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_034",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-034",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 034",
+    "description": "Generated item 034",
+    "type": "perk",
+    "cost": 340,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:34:00.000Z",
+    "updatedAt": "2026-01-02T00:34:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 34,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_035",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-035",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 035",
+    "description": "Generated item 035",
+    "type": "perk",
+    "cost": 350,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:35:00.000Z",
+    "updatedAt": "2026-01-02T00:35:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 35,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_036",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-036",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 036",
+    "description": "Generated item 036",
+    "type": "perk",
+    "cost": 360,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:36:00.000Z",
+    "updatedAt": "2026-01-02T00:36:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 36,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_037",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-037",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 037",
+    "description": "Generated item 037",
+    "type": "perk",
+    "cost": 370,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:37:00.000Z",
+    "updatedAt": "2026-01-02T00:37:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 37,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_038",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-038",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 038",
+    "description": "Generated item 038",
+    "type": "perk",
+    "cost": 380,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:38:00.000Z",
+    "updatedAt": "2026-01-02T00:38:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 38,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_039",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-039",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 039",
+    "description": "Generated item 039",
+    "type": "perk",
+    "cost": 390,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:39:00.000Z",
+    "updatedAt": "2026-01-02T00:39:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 39,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_040",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-040",
+    "subscriberOnly": true,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 040",
+    "description": "Generated item 040",
+    "type": "perk",
+    "cost": 400,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:40:00.000Z",
+    "updatedAt": "2026-01-02T00:40:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 40,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_041",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-041",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 041",
+    "description": "Generated item 041",
+    "type": "perk",
+    "cost": 410,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:41:00.000Z",
+    "updatedAt": "2026-01-02T00:41:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 41,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_042",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-042",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 042",
+    "description": "Generated item 042",
+    "type": "perk",
+    "cost": 420,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:42:00.000Z",
+    "updatedAt": "2026-01-02T00:42:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 42,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_043",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-043",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 043",
+    "description": "Generated item 043",
+    "type": "perk",
+    "cost": 430,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:43:00.000Z",
+    "updatedAt": "2026-01-02T00:43:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 43,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_044",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-044",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 044",
+    "description": "Generated item 044",
+    "type": "perk",
+    "cost": 440,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:44:00.000Z",
+    "updatedAt": "2026-01-02T00:44:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 44,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_045",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-045",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": true,
+    "name": "Bulk Item 045",
+    "description": "Generated item 045",
+    "type": "perk",
+    "cost": 450,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:45:00.000Z",
+    "updatedAt": "2026-01-02T00:45:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 45,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_046",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-046",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 046",
+    "description": "Generated item 046",
+    "type": "perk",
+    "cost": 460,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:46:00.000Z",
+    "updatedAt": "2026-01-02T00:46:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 46,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_047",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-047",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 047",
+    "description": "Generated item 047",
+    "type": "perk",
+    "cost": 470,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:47:00.000Z",
+    "updatedAt": "2026-01-02T00:47:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 47,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_048",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-048",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 048",
+    "description": "Generated item 048",
+    "type": "perk",
+    "cost": 480,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:48:00.000Z",
+    "updatedAt": "2026-01-02T00:48:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 48,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_049",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-049",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 049",
+    "description": "Generated item 049",
+    "type": "perk",
+    "cost": 490,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:49:00.000Z",
+    "updatedAt": "2026-01-02T00:49:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 49,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_050",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-050",
+    "subscriberOnly": true,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 050",
+    "description": "Generated item 050",
+    "type": "perk",
+    "cost": 500,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:50:00.000Z",
+    "updatedAt": "2026-01-02T00:50:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 50,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_051",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-051",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 051",
+    "description": "Generated item 051",
+    "type": "perk",
+    "cost": 510,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:51:00.000Z",
+    "updatedAt": "2026-01-02T00:51:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 51,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_052",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-052",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 052",
+    "description": "Generated item 052",
+    "type": "perk",
+    "cost": 520,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:52:00.000Z",
+    "updatedAt": "2026-01-02T00:52:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 52,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_053",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-053",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 053",
+    "description": "Generated item 053",
+    "type": "perk",
+    "cost": 530,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:53:00.000Z",
+    "updatedAt": "2026-01-02T00:53:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 53,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_054",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-054",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 054",
+    "description": "Generated item 054",
+    "type": "perk",
+    "cost": 540,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:54:00.000Z",
+    "updatedAt": "2026-01-02T00:54:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 54,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_055",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-055",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 055",
+    "description": "Generated item 055",
+    "type": "perk",
+    "cost": 550,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:55:00.000Z",
+    "updatedAt": "2026-01-02T00:55:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 55,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_056",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-056",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 056",
+    "description": "Generated item 056",
+    "type": "perk",
+    "cost": 560,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:56:00.000Z",
+    "updatedAt": "2026-01-02T00:56:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 56,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_057",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-057",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 057",
+    "description": "Generated item 057",
+    "type": "perk",
+    "cost": 570,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:57:00.000Z",
+    "updatedAt": "2026-01-02T00:57:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 57,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_058",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-058",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 058",
+    "description": "Generated item 058",
+    "type": "perk",
+    "cost": 580,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:58:00.000Z",
+    "updatedAt": "2026-01-02T00:58:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 58,
+    "sources": ["website"],
+    "categoryName": "Emotes",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_059",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-059",
+    "subscriberOnly": false,
+    "userInput": [],
+    "enabled": true,
+    "featured": false,
+    "name": "Bulk Item 059",
+    "description": "Generated item 059",
+    "type": "perk",
+    "cost": 590,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:59:00.000Z",
+    "updatedAt": "2026-01-02T00:59:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 59,
+    "sources": ["website"],
+    "categoryName": "Badges",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  },
+  {
+    "bot": {
+      "identifier": "bulk_item_060",
+      "sendResponse": false
+    },
+    "cooldown": {
+      "user": 0,
+      "global": 0,
+      "category": 0
+    },
+    "quantity": {
+      "total": -1,
+      "current": -1
+    },
+    "alert": {
+      "graphics": {
+        "duration": 8,
+        "type": "image",
+        "src": ""
+      },
+      "audio": {
+        "src": null,
+        "volume": 0.5
+      },
+      "enabled": false
+    },
+    "_id": "bulk-item-060",
+    "subscriberOnly": true,
+    "userInput": [],
+    "enabled": true,
+    "featured": true,
+    "name": "Bulk Item 060",
+    "description": "Generated item 060",
+    "type": "perk",
+    "cost": 600,
+    "public": true,
+    "channel": "e2e-bulk-channel-id",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-01-02T00:00:00.000Z",
+    "preview": "https://cdn.example.com/preview.png",
+    "order": 60,
+    "sources": ["website"],
+    "categoryName": "Apparel",
+    "thumbnail": "https://cdn.example.com/thumb.png"
+  }
+]

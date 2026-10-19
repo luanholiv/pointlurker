@@ -1,0 +1,38 @@
+{
+  "priority": 1,
+  "scenarioName": "notify-availability",
+  "requiredScenarioState": "Started",
+  "request": {
+    "method": "GET",
+    "urlPath": "/kappa/v2/store/e2e-notify-channel-id/items",
+    "queryParameters": {
+      "source": { "equalTo": "website" }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": [
+      {
+        "_id": "e2e-notify-item-id",
+        "channel": "e2e-notify-channel-id",
+        "name": "E2E Notify Item",
+        "description": "Sold out until the scenario flips.",
+        "type": "perk",
+        "cost": 100,
+        "categoryName": "notify",
+        "enabled": true,
+        "featured": false,
+        "public": true,
+        "subscriberOnly": false,
+        "allowMessages": false,
+        "userInput": [],
+        "sources": ["website"],
+        "quantity": { "total": 5, "current": 0 },
+        "cooldown": { "user": 0, "global": 0, "category": 0 },
+        "createdAt": "2026-01-01T00:00:00.000Z",
+        "updatedAt": "2026-01-01T00:00:00.000Z"
+      }
+    ]
+  }
+}

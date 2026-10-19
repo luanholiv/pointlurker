@@ -1,0 +1,10 @@
+{
+  "logged": true,
+  "user": {
+    "username": "someviewer",
+    "name": "Some Viewer",
+    "picture": "https://kick.com/img/default-profile-pictures/default-avatar-5.webp"
+  },
+  "points": 1234,
+  "rank": 567
+}

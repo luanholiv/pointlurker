@@ -1,0 +1,13 @@
+{
+  "channel": "5ea766d578edd899791c1eb8",
+  "redeemerType": "Channel",
+  "redeemer": "5fa01b6721737924e36aa7f7",
+  "item": "5ecede07db1d069c8feacee2",
+  "completed": false,
+  "source": "website",
+  "input": ["test@email.com", "John Doe"],
+  "message": "",
+  "_id": "69a595406f7bf684bcf63750",
+  "createdAt": "2026-03-02T13:48:48.043Z",
+  "updatedAt": "2026-03-02T13:48:48.043Z"
+}

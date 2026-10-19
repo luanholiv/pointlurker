@@ -1,0 +1,568 @@
+{
+  "common": {
+    "cancel": "Cancel",
+    "add": "Add",
+    "remove": "Remove",
+    "brandName": "PointLurker",
+    "brandSub": "Console",
+    "workspace": "Workspace",
+    "search": "Search",
+    "saving": "Saving…",
+    "pts": "pts",
+    "clearFilters": "Clear filters"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Sign in",
+    "signInDescription": "Enter your admin credentials to open the monitoring console.",
+    "authenticatorCode": "Authenticator code",
+    "signingIn": "Signing in…",
+    "loadingStatus": "Loading authentication status...",
+    "signInFailed": "Sign in failed",
+    "bootstrapLink": "Bootstrap admin →",
+    "bootstrapEyebrow": "First run · one-time",
+    "bootstrapDescription": "No user exists yet. Create the sole admin account — you can change credentials later.",
+    "emailPlaceholder": "you@domain.tld",
+    "passwordPlaceholder": "At least 12 chars",
+    "confirmNewPassword": "Confirm new password",
+    "passwordsMismatch": "Passwords do not match",
+    "creating": "Creating…",
+    "createAdmin": "Create admin",
+    "alreadyBootstrapped": "already bootstrapped?",
+    "backToSignIn": "← Sign in",
+    "createAdminFailed": "Unable to create admin account"
+  },
+  "home": {
+    "workerOnline": "worker online",
+    "forceSync": "Force sync",
+    "title": "Mission",
+    "titleEm": "console",
+    "unitSeconds": "s",
+    "deltaThisWeek": "+0 this week",
+    "deltaVsPrev": "+0 vs prev",
+    "kpiStores": "Stores watched",
+    "kpiWishlist": "Wishlist items",
+    "kpiRedemptions": "Redemptions · 24h",
+    "kpiSyncLatency": "Sync latency",
+    "kpiAvailableCount": "{{count}} available now",
+    "liveFeedEyebrow": "Live feed · 4m cycle",
+    "activityHeading": "Activity",
+    "streaming": "streaming",
+    "noActivity": "No activity yet — sync jobs will appear here.",
+    "nextCycleIn": "next cycle in",
+    "lastCycle": "last cycle",
+    "storesLabel": "stores",
+    "newItems": "new items",
+    "autoRedeem": "auto-redeem",
+    "wishlistReady": "Wishlist · ready",
+    "availableNow": "Available now",
+    "noAvailableItems": "No available wishlist items right now.",
+    "redeem": "Redeem"
+  },
+  "navigation": {
+    "stores": "Stores",
+    "wishlist": "Wishlist",
+    "redemptions": "Redemptions",
+    "settings": "Settings",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "topbar": {
+    "skipToContent": "Skip to main content",
+    "getStarted": "Get started",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+  "stores": {
+    "title": "Stores",
+    "description": "Every store this instance is watching.",
+    "addButton": "Add Store",
+    "searchPlaceholder": "Search stores by name or ID…",
+    "searchAriaLabel": "Search stores",
+    "loadMore": "Load more",
+    "loadError": "Failed to load stores. Please try again.",
+    "createFailed": "Failed to create store",
+    "loading": "Loading stores...",
+    "watchedLabel": "{{filtered}} / {{total}} watched",
+    "active": "Active",
+    "paused": "Paused",
+    "inactive": "Inactive",
+    "channelUsername": "Channel username",
+    "lookup": "Lookup",
+    "lookingUp": "Looking up...",
+    "pause": "Pause",
+    "resume": "Resume",
+    "viewItems": "View items",
+    "itemCount_one": "{{count}} item",
+    "itemCount_other": "{{count}} items",
+    "syncLabel": "SYNC",
+    "foundPill": "found",
+    "addDialog": {
+      "eyebrow": "01 · ADD STORE",
+      "titleEm": "store",
+      "usernamePlaceholder": "e.g. xqc",
+      "description": "Enter a StreamElements channel username. We'll verify and pull its current item list.",
+      "continue": "Continue →",
+      "descriptionFixed": "{{provider}} is a single store. We'll check it is reachable and pull its current item list.",
+      "credentialMissing": "Add your {{provider}} credential in Settings first.",
+      "alreadyAdded": "{{provider}} is already being watched.",
+      "storeId": "id · {{id}}"
+    },
+    "backToStores": "Back to Stores",
+    "filterAll": "All",
+    "filterActive": "Active",
+    "filterPaused": "Paused",
+    "detailLoading": "Loading store...",
+    "detailNotFound": "Store not found.",
+    "detailLoadError": "Failed to load store.",
+    "tabs": {
+      "items": "Items",
+      "profile": "Profile",
+      "attention": "Profile needs attention"
+    },
+    "toast": {
+      "pausedKicker": "Paused",
+      "pausedMsg": "Store paused",
+      "resumedKicker": "Resumed",
+      "resumedMsg": "Store resumed",
+      "removedKicker": "Removed",
+      "removedMsg": "Store removed",
+      "errorKicker": "Error",
+      "toggleError": "Failed to update store status",
+      "removeError": "Failed to remove store"
+    },
+    "missingLabels": {
+      "eyebrow": "01 · STORE CREATED",
+      "title": "Fill",
+      "titleEm": "store profile",
+      "description_one": "{{storeName}} has {{count}} input label without a stored value. Auto-redeem will block items requiring this label until filled.",
+      "description_other": "{{storeName}} has {{count}} input labels without stored values. Auto-redeem will block items requiring these labels until filled.",
+      "skip": "Skip for now",
+      "saveProfile": "Save profile",
+      "saveFailed": "Failed to save"
+    },
+    "profile": {
+      "loading": "Loading profile...",
+      "loadError": "Failed to load store profile.",
+      "title": "Store input profile",
+      "updated": "updated {{date}}",
+      "replacePlaceholder": "(replace stored value)",
+      "valuePlaceholder": "Value to store",
+      "setValue": "Set a value",
+      "mapToExisting": "Map to existing",
+      "selectCanonical": "— Select canonical label —",
+      "save": "Save profile",
+      "saveFailed": "Failed to save.",
+      "pill": {
+        "resolved": "resolved",
+        "needsValue": "needs value",
+        "notRequested": "no item requests this"
+      },
+      "requestedByItems_one": "requested by {{count}} item",
+      "requestedByItems_other": "requested by {{count}} items",
+      "blocksEntries_one": "blocks {{count}} auto-redeem entry",
+      "blocksEntries_other": "blocks {{count}} auto-redeem entries",
+      "bestMatch": "best match: {{canonical}} ({{score}}%)",
+      "aliasedToValueless": "aliased to \"{{canonical}}\" — that label has no value yet",
+      "fedByLabel": "fed by",
+      "sourceExact": "exact",
+      "sourceAlias": "alias",
+      "sourceFuzzy": "fuzzy {{score}}%",
+      "deleteValue": "Delete",
+      "deleteAlias": "Remove the alias {{label}}",
+      "deleteSoftWarning_one": "{{count}} label resolves here — deleting may leave it unresolved.",
+      "deleteSoftWarning_other": "{{count}} labels resolve here — deleting may leave them unresolved.",
+      "deleteConfirm": "Delete value",
+      "deleteCancel": "Cancel",
+      "deleteFailed": "Failed to delete.",
+      "rawLabelField": "Detected label",
+      "canonicalField": "Canonical label",
+      "empty": {
+        "title": "No input labels",
+        "body": "No item in this store asks for extra input, such as a Steam trade link, so there is nothing to fill in."
+      }
+    },
+    "filters": {
+      "searchPlaceholder": "Search items...",
+      "searchAriaLabel": "Search items",
+      "available": "Available",
+      "subscriberOnly": "Sub Only",
+      "featured": "Featured",
+      "categories": "Categories",
+      "categoryAriaLabel": "Category filter",
+      "minPts": "Min pts",
+      "maxPts": "Max pts",
+      "minCostAriaLabel": "Minimum cost",
+      "maxCostAriaLabel": "Maximum cost",
+      "sortBy": "Sort by",
+      "sortFieldAriaLabel": "Sort field",
+      "sortDirAriaLabel": "Sort direction",
+      "activeFiltersAriaLabel": "Active filters",
+      "removeFilterAriaLabel": "Remove filter {{label}}",
+      "sortRelevance": "Relevance",
+      "sortName": "Name",
+      "sortCost": "Cost",
+      "sortStock": "Stock",
+      "sortDate": "Date Added",
+      "sortAsc": "Ascending",
+      "sortDesc": "Descending",
+      "showingUnavailable": "Showing unavailable",
+      "minFilter": "Min: {{value}}",
+      "maxFilter": "Max: {{value}}",
+      "sortFilter": "Sort: {{label}}",
+      "resetAll": "Reset all"
+    },
+    "channelId": "Channel ID",
+    "displayName": "Store name",
+    "configureCredential": "Add a store credential in Settings to add stores.",
+    "provider": "Provider",
+    "empty": {
+      "title": "No stores yet",
+      "body": "Add a StreamElements or GauPoints store and the monitor checks it for new and restocked items on every sync.",
+      "bodyNoCredential": "Connect a StreamElements or GauPoints account in Settings, then add the store you want to watch.",
+      "openSettings": "Open Settings"
+    },
+    "emptyFiltered": {
+      "title": "No stores match",
+      "body": "Nothing matches the current search and filters."
+    },
+    "noItems": {
+      "title": "This store has no items",
+      "body": "The last sync found an empty catalogue. The next sync checks it again."
+    },
+    "itemsFiltered": {
+      "title": "No items match",
+      "body": "Nothing in this store matches the current search and filters."
+    }
+  },
+  "item": {
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "stock": "Stock: {{current}} / {{total}}",
+    "subOnly": "Sub Only"
+  },
+  "wishlist": {
+    "title": "Wishlist",
+    "description": "Track items you plan to redeem as they become available.",
+    "add": "Add to wishlist",
+    "addFailed": "Failed to add to wishlist",
+    "updateFailed": "Failed to update wishlist entry",
+    "wishlisted": "Wishlisted",
+    "remove": "Remove",
+    "edit": "Edit",
+    "autoRedeem": "Auto-redeem",
+    "notify": "Notify",
+    "notifyOnAvailable": "Notify when available",
+    "autoRedeemWhenAvailable": "Auto-redeem when available",
+    "desiredRedemptions": "How many to redeem",
+    "desiredRedemptionsHint": "Auto-redeem stops after this many. Each one spends points.",
+    "desiredRedemptionsUnlimited": "No limit",
+    "desiredRedemptionsUnlimitedHint": "Auto-redeem keeps going while points last.",
+    "quotaProgress": "{{used}} of {{desired}} redeemed",
+    "quotaProgressUnlimited": "{{used}} redeemed, no limit",
+    "quotaReached": "Quota reached",
+    "redemptionMessage": "Redemption message (optional)",
+    "searchPlaceholder": "Search wishlisted items…",
+    "searchAriaLabel": "Search wishlisted items",
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "saving": "Saving...",
+    "saveChanges": "Save Changes",
+    "addToWishlist": "Add to Wishlist",
+    "blocked": "Blocked: missing profile values for {{labels}}.",
+    "fillProfile": "Fill profile",
+    "autoRedeemBlocked": "Auto-redeem blocked.",
+    "autoRedeemBlockedDetail": "Store profile missing values for: {{labels}}.",
+    "autoRedeemBlockedAction": "Open store profile to fill them.",
+    "loading": "Loading wishlist...",
+    "loadError": "Failed to load wishlist.",
+    "synced": "Synced {{date}}",
+    "modal": {
+      "addEyebrow": "02 · WISHLIST",
+      "editTitle": "Edit",
+      "editTitleEm": "entry",
+      "addTitle": "Add to",
+      "addTitleEm": "wishlist",
+      "description": "{{name}} — {{cost}} pts"
+    },
+    "toast": {
+      "errorKicker": "Error",
+      "loadEntryError": "Failed to load wishlist entry",
+      "removeError": "Failed to remove wishlist entry"
+    },
+    "storeItem": "Item",
+    "empty": {
+      "title": "Your wishlist is empty",
+      "body": "Add items from a store. You get an email when one is back in stock, and auto-redeem can claim it for you.",
+      "cta": "Browse stores"
+    },
+    "searchEmpty": {
+      "title": "No wishlisted items match",
+      "body": "Nothing on your wishlist matches “{{query}}”.",
+      "cta": "Clear search"
+    }
+  },
+  "redemption": {
+    "title": "Redemptions",
+    "description": "Track the lifecycle of your store redemptions.",
+    "results_one": "{{count}} result",
+    "results_other": "{{count}} results",
+    "loading": "Loading redemptions...",
+    "loadError": "Failed to load redemptions.",
+    "retry": "Retry",
+    "pagination": "{{from}}–{{to}} of {{total}}",
+    "noResultsPagination": "No results",
+    "previous": "Previous",
+    "next": "Next",
+    "status": {
+      "Pending": "Pending",
+      "Submitted": "Submitted",
+      "Completed": "Success",
+      "SubmissionFailed": "Failed",
+      "CompletionTimedOut": "Timed Out",
+      "Rejected": "Rejected"
+    },
+    "columns": {
+      "status": "Status",
+      "item": "Item",
+      "store": "Store",
+      "attempted": "Attempted",
+      "submitted": "Submitted",
+      "completed": "Completed",
+      "reason": "Reason"
+    },
+    "filter": {
+      "from": "From",
+      "to": "To",
+      "fromAriaLabel": "From date",
+      "toAriaLabel": "To date",
+      "allChip": "All",
+      "successChip": "Success",
+      "failedChip": "Failed",
+      "pendingChip": "Pending",
+      "submittedChip": "Submitted"
+    },
+    "statusCheckFailing_one": "Status check failing ({{count}} attempt)",
+    "statusCheckFailing_other": "Status check failing ({{count}} attempts)",
+    "empty": {
+      "title": "No redemptions yet",
+      "body": "When auto-redeem claims a wishlisted item, the redemption and its status appear here.",
+      "cta": "Open wishlist"
+    },
+    "emptyFiltered": {
+      "title": "No redemptions match",
+      "body": "Nothing matches the current status and date filters."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your account, integrations, and security.",
+    "account": "Account",
+    "credentialsTab": "Store credentials",
+    "security": "Security",
+    "identity": "Identity",
+    "userId": "User ID",
+    "credentialConfigured": "Configured",
+    "credentialNotSet": "Not set",
+    "jwtTokenLabel": "JWT Token",
+    "jwtTokenPlaceholder": "Paste your JWT token here...",
+    "saveToken": "Save Token",
+    "savingToken": "Saving...",
+    "clearToken": "Clear Token",
+    "tokenSaved": "Token updated.",
+    "saveTokenFailed": "Failed to save token",
+    "clearTokenFailed": "Failed to clear token",
+    "changePasswordHeading": "Change password",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "confirmNewPassword": "Confirm new password",
+    "passwordsMismatch": "Passwords do not match",
+    "updateFailed": "Update failed",
+    "passwordSaved": "Password updated.",
+    "updatePassword": "Update password",
+    "savingPassword": "Saving…",
+    "authenticator": "Authenticator",
+    "twoFactorHeading": "Two-factor auth",
+    "twoFactorEnabled": "Two-factor is enabled.",
+    "disable2FA": "Disable",
+    "enable2FA": "Enable two-factor",
+    "scanKey": "Scan this key in your authenticator app.",
+    "orEnterKey": "Or enter this key manually.",
+    "verificationCode": "Verification code",
+    "verifyAndEnable": "Verify and enable",
+    "enable2FAFailed": "Failed to start two-factor setup",
+    "verify2FAFailed": "Failed to verify the code",
+    "disable2FAFailed": "Failed to disable two-factor authentication",
+    "disable2FAConfirmTitle": "Turn off two-factor authentication?",
+    "disable2FAConfirmBody": "Your authenticator app stops working and its key is revoked. Turning two-factor back on later means scanning a new code.",
+    "disable2FAConfirmAction": "Turn it off",
+    "recoveryCodesHeading": "Recovery codes",
+    "recoveryCodesIntro": "Save these somewhere safe. Each one signs you in once if you lose your authenticator, and they are shown only now.",
+    "recoveryCodesAcknowledge": "I saved them",
+    "sessionsHeading": "Sessions",
+    "sessionsDescription": "Sign out of all active sessions across all devices.",
+    "revokeAllSessions": "Revoke all sessions",
+    "language": "Language",
+    "changeLocale": "Change language",
+    "localeSaved": "Language updated",
+    "localeError": "Failed to update language",
+    "streamElements": {
+      "howTo": "Sign in at streamelements.com, open your account's Channels tab (streamelements.com/dashboard/account/channels), turn on Show secrets and copy the JWT token. It grants full access to your channel, so keep it private."
+    },
+    "gauPoints": {
+      "notSet": "Not set",
+      "configured": "Configured",
+      "expired": "Expired",
+      "refused": "Refused",
+      "howTo": "Sign in at gaupoints.com.br, open your browser's developer tools, and copy the value of the kp_session cookie. It lasts seven days; you are emailed before it runs out.",
+      "account": "Signed in as {{account}}",
+      "expiresAt": "Expires {{when}}",
+      "expiredAt": "Expired {{when}}",
+      "label": "kp_session cookie",
+      "placeholder": "Paste the kp_session value",
+      "saved": "Session saved.",
+      "save": "Save session",
+      "clear": "Clear session"
+    }
+  },
+  "errors": {
+    "validation": {
+      "failed": "One or more validation errors occurred.",
+      "required": "This field is required.",
+      "too_long": "Value is too long (maximum {{max}} characters).",
+      "too_short": "Value is too short (minimum {{min}} characters).",
+      "out_of_range": "Value must be between {{min}} and {{max}}.",
+      "invalid_format": "Invalid format.",
+      "password_too_short": "Password must be at least {{min}} characters.",
+      "password_requires_digit": "Password must contain at least one digit.",
+      "password_requires_upper": "Password must contain at least one uppercase letter.",
+      "password_requires_lower": "Password must contain at least one lowercase letter.",
+      "password_requires_non_alphanumeric": "Password must contain at least one non-alphanumeric character.",
+      "password_requires_unique_chars": "Password must contain at least {{min}} unique characters.",
+      "password_mismatch": "Passwords do not match.",
+      "duplicate_user_name": "Username '{{userName}}' is already taken.",
+      "invalid_user_name": "Username '{{userName}}' is invalid.",
+      "duplicate_email": "Email '{{email}}' is already registered.",
+      "invalid_email": "Email '{{email}}' is invalid."
+    },
+    "request": {
+      "malformed_body": "The request could not be read. Please try again.",
+      "body_too_large": "The request is too large."
+    },
+    "search": {
+      "invalid_enum_value": "'{{value}}' is not a valid value for '{{parameter}}'.",
+      "invalid_filter_value": "'{{value}}' is not a valid value for '{{parameter}}'."
+    },
+    "users": {
+      "not_found": "User not found.",
+      "register_already_exists": "An account already exists.",
+      "locale_unsupported": "Locale '{{locale}}' is not supported."
+    },
+    "auth": {
+      "unauthorized": "Invalid credentials.",
+      "two_factor_required": "Two-factor authentication code required.",
+      "two_factor_invalid": "Invalid two-factor authentication code.",
+      "provider_credential_not_configured": "Add this provider's credential in Settings before adding its store."
+    },
+    "credentials": {
+      "secret_required": "A credential is required.",
+      "rejected": "The provider did not accept this credential. Check it and try again.",
+      "provider_unsupported": "Credentials cannot be stored for '{{provider}}'.",
+      "expired": "The credential has already expired. Copy a fresh one and try again."
+    },
+    "stores": {
+      "not_found": "Store not found.",
+      "already_exists": "A store for channel '{{channelId}}' already exists.",
+      "provider_unsupported": "Stores cannot be added for this provider.",
+      "identity_not_accepted": "This provider's store is identified by the server, not by the request."
+    },
+    "wishlist": {
+      "entry_not_found": "Wishlist entry not found.",
+      "item_not_found": "Store item not found.",
+      "already_exists": "This item is already in your wishlist.",
+      "missing_input_coverage": "Missing required inputs: {{missingLabels}}.",
+      "messages_not_supported": "This item does not accept a redemption message."
+    },
+    "store_lookup": {
+      "query_required": "Enter a channel name to search for.",
+      "not_found": "No store found for '{{query}}'."
+    },
+    "provider_api": {
+      "unreachable": "The store provider is unreachable. Try again later.",
+      "fetch_failed": "The store provider answered with an error. Try again later."
+    },
+    "redemption": {
+      "failure": {
+        "unknown": "Unknown failure.",
+        "token_decryption_failed": "Token decryption failed.",
+        "input_coverage_lost": "Input coverage lost.",
+        "input_decryption_failed": "Input decryption failed.",
+        "provider_api_bad_request": "The store rejected the request.",
+        "provider_api_unauthorized": "The store did not accept your credential.",
+        "provider_api_forbidden": "The store refused access.",
+        "provider_api_not_found": "The store no longer has this item.",
+        "provider_api_server_error": "The store had a server error.",
+        "insufficient_points": "Not enough points to redeem this item.",
+        "provider_rejected": "The store refused the redemption.",
+        "credential_expired": "Your store credential had expired, so the redemption was not sent."
+      }
+    },
+    "system": {
+      "internal_error": "An unexpected error occurred.",
+      "upstream_unavailable": "An upstream service is unavailable."
+    }
+  },
+  "validation": {
+    "fieldMessage": "{{label}}: {{message}}"
+  },
+  "providers": {
+    "streamelements": "StreamElements",
+    "gaupoints": "GauPoints"
+  },
+  "onboarding": {
+    "title": "Get started",
+    "description": "Three steps and PointLurker starts watching loyalty stores for you.",
+    "progress": "{{done}} of {{total}} done",
+    "done": "Done",
+    "optional": "Optional",
+    "steps": {
+      "credential": {
+        "title": "Connect a provider",
+        "body": "Paste your StreamElements JWT token or your GauPoints session cookie. Settings shows where to find each.",
+        "cta": "Open credentials"
+      },
+      "store": {
+        "title": "Add a store",
+        "body": "Pick the loyalty store you want to watch. It is checked for new and restocked items on every sync.",
+        "cta": "Add a store"
+      },
+      "wishlist": {
+        "title": "Wishlist an item",
+        "body": "Open a store and wishlist what you want. You get an email when it is back in stock.",
+        "cta": "Browse stores"
+      },
+      "autoRedeem": {
+        "title": "Turn on auto-redeem",
+        "body": "With an item on your wishlist, auto-redeem can claim it the moment it is available. Items that ask for extra input, such as a Steam trade link, take it from the store's profile.",
+        "cta": "Open wishlist"
+      }
+    },
+    "widget": {
+      "label": "Finish setup",
+      "count": "{{done}}/{{total}}",
+      "progressLabel": "Setup progress",
+      "complete": "Setup complete"
+    },
+    "complete": {
+      "title": "You're all set",
+      "body": "PointLurker is watching your stores and emails you when a wishlisted item is in stock.",
+      "finish": "Finish setup"
+    },
+    "toast": {
+      "kicker": "Setup complete",
+      "msg": "PointLurker is watching your stores."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "suppressions": [
+        {
+            "ruleId": "SW004",
+            "pattern": "**/StoreSyncBackgroundServiceTests.cs",
+            "justification": "Intentional timeout tests."
+        }
+    ],
+    "globalSuppressions": []
+}

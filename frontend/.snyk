@@ -1,0 +1,12 @@
+# Snyk (https://snyk.io) policy file
+version: v1.25.0
+ignore: {}
+patch: {}
+exclude:
+  code:
+    - "**/*.test.ts"
+    - "**/*.test.tsx"
+    - "src/test/**"
+    # Playwright E2E specs use hardcoded test credentials/tokens (e.g. "Password123!",
+    # deterministic fake access/refresh tokens) — test data, not real secrets.
+    - "tests/**"

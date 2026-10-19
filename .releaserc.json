@@ -1,0 +1,38 @@
+{
+  "branches": ["main"],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "releaseRules": [
+          {
+            "type": "chore",
+            "scope": "deps",
+            "subject": "*\\[SECURITY\\]*",
+            "release": "patch"
+          }
+        ]
+      }
+    ],
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "docker-compose.yml",
+            "label": "docker-compose.yml"
+          },
+          {
+            "path": ".env.example",
+            "label": ".env.example"
+          }
+        ],
+        "draftRelease": true,
+        "successComment": false,
+        "failComment": false,
+        "releasedLabels": false
+      }
+    ]
+  ]
+}

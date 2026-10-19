@@ -1,0 +1,12 @@
+# Snyk (https://snyk.io) policy file
+version: v1.25.0
+ignore: {}
+patch: {}
+exclude:
+  code:
+    # Test fixtures use hardcoded passwords and usernames (e.g. "Password123!",
+    # UserName = "test@test.com") — these are test data, not real credentials.
+    - "tests/**"
+    # ErrorCodes.cs contains only static string constants used as error identifiers
+    # (e.g. "validation.password_too_short"). No secrets or credentials.
+    - "src/Core.Domain/Errors/ErrorCodes.cs"

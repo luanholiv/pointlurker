@@ -1,0 +1,169 @@
+name: "pointlurker"
+
+services:
+  dataprotection-init:
+    image: alpine:3.24
+    container_name: pointlurker-dataprotection-init
+    hostname: dataprotection-init
+    restart: "no"
+    command: ["sh", "-c", "mkdir -p /app/.aspnet/DataProtection-Keys && chown -R 1000:1000 /app/.aspnet/DataProtection-Keys"]
+    volumes:
+      - dataprotection_keys:/app/.aspnet/DataProtection-Keys
+    networks:
+      - pointlurker-network
+
+  database:
+    image: postgres:17-alpine
+    container_name: pointlurker-database
+    hostname: database
+    restart: unless-stopped
+    command: "postgres -c max_connections=100 -c shared_buffers=256MB"
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-api}
+      - POSTGRES_USER=${POSTGRES_USER:-api}
+      - POSTGRES_DB=${POSTGRES_DB:-PointLurker}
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "1024MB"
+    networks:
+      - pointlurker-network
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "sh -c 'pg_isready -U ${POSTGRES_USER:-api} -d ${POSTGRES_DB:-PointLurker}'",
+        ]
+      interval: 10s
+      retries: 3
+      timeout: 1s
+      start_period: 10s
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    image: ghcr.io/luanholiv/pointlurker-backend:${IMAGE_TAG:-latest}
+    container_name: pointlurker-backend
+    hostname: backend
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - CONNECTIONSTRINGS__DATABASE=Host=database;Port=5432;Database=${POSTGRES_DB:-PointLurker};Username=${POSTGRES_USER:-api};Password=${POSTGRES_PASSWORD:-api}
+      - DATAPROTECTION__KEYRINGPATH=/app/.aspnet/DataProtection-Keys
+      - LOGGING__LOGLEVEL__DEFAULT=${LOGGING__LOGLEVEL__DEFAULT:-Information}
+      - LOGGING__LOGLEVEL__MICROSOFT=${LOGGING__LOGLEVEL__MICROSOFT:-Warning}
+      - ALLOWEDHOSTS=${ALLOWEDHOSTS:-*}
+      - APP__PUBLICBASEURL=${APP__PUBLICBASEURL}
+      - STREAMELEMENTS__BASEURL=${STREAMELEMENTS__BASEURL:-https://api.streamelements.com}
+      - GAUPOINTS__BASEURL=${GAUPOINTS__BASEURL:-https://gaupoints.com.br}
+      - GAUPOINTS__SESSIONCOOKIENAME=${GAUPOINTS__SESSIONCOOKIENAME:-kp_session}
+      - SMTP__HOST=${SMTP__HOST}
+      - SMTP__USERNAME=${SMTP__USERNAME}
+      - SMTP__PASSWORD=${SMTP__PASSWORD}
+      - SMTP__FROM=${SMTP__FROM}
+      - SMTP__PORT=${SMTP__PORT:-587}
+      - SMTP__SECURITY=${SMTP__SECURITY:-StartTls}
+      - SMTP__MAXRETRIES=${SMTP__MAXRETRIES:-3}
+      - SMTP__RETRYBASEDELAYSECONDS=${SMTP__RETRYBASEDELAYSECONDS:-2}
+      - INPUTRESOLUTION__MATCHTHRESHOLD=${INPUTRESOLUTION__MATCHTHRESHOLD:-85}
+      - SYNC__FETCHCRONEXPRESSION=${SYNC__FETCHCRONEXPRESSION:-* * * * *}
+      - SYNC__USERNAMEREFRESHCRONEXPRESSION=${SYNC__USERNAMEREFRESHCRONEXPRESSION:-0 0 * * *}
+      - SYNC__RESOLUTIONLOGRETENTIONDAYS=${SYNC__RESOLUTIONLOGRETENTIONDAYS:-30}
+      - SYNC__MINIMUMAUTOREDEEMINTERVALMINUTES=${SYNC__MINIMUMAUTOREDEEMINTERVALMINUTES:-5}
+      - REDEMPTIONS__POLLINGCRONEXPRESSION=${REDEMPTIONS__POLLINGCRONEXPRESSION:-* * * * *}
+      - REDEMPTIONS__COMPLETIONTIMEOUTHOURS=${REDEMPTIONS__COMPLETIONTIMEOUTHOURS:-24}
+      - REDEMPTIONS__POLLFAILUREALERTTHRESHOLD=${REDEMPTIONS__POLLFAILUREALERTTHRESHOLD:-10}
+      - REDEMPTIONS__FULFILLMENTSWEEPINTERVALMINUTES=${REDEMPTIONS__FULFILLMENTSWEEPINTERVALMINUTES:-5}
+      - REDEMPTIONS__RETRYSWEEPINTERVALMINUTES=${REDEMPTIONS__RETRYSWEEPINTERVALMINUTES:-5}
+      - CREDENTIALS__EXPIRYWARNINGHOURS=${CREDENTIALS__EXPIRYWARNINGHOURS:-48}
+      - AUTHENTICATION__ACCESSTOKENEXPIRATIONMINUTES=${AUTHENTICATION__ACCESSTOKENEXPIRATIONMINUTES:-30}
+      - AUTHENTICATION__REFRESHTOKENEXPIRATIONHOURS=${AUTHENTICATION__REFRESHTOKENEXPIRATIONHOURS:-24}
+      - AUTHENTICATION__LOCKOUTDURATIONMINUTES=${AUTHENTICATION__LOCKOUTDURATIONMINUTES:-5}
+      - AUTHENTICATION__LOCKOUTMAXFAILEDATTEMPTS=${AUTHENTICATION__LOCKOUTMAXFAILEDATTEMPTS:-5}
+      - AUTHENTICATION__PASSWORDMINIMUMLENGTH=${AUTHENTICATION__PASSWORDMINIMUMLENGTH:-8}
+      - CORS__ALLOWEDORIGINS__0=${CORS__ALLOWEDORIGINS__0:-}
+      - CORS__ALLOWEDORIGINS__1=${CORS__ALLOWEDORIGINS__1:-}
+    depends_on:
+      database:
+        condition: service_healthy
+      dataprotection-init:
+        condition: service_completed_successfully
+    networks:
+      - pointlurker-network
+    volumes:
+      - dataprotection_keys:/app/.aspnet/DataProtection-Keys
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://localhost:8080/health"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+      start_period: 15s
+
+  frontend:
+    image: ghcr.io/luanholiv/pointlurker-frontend:${IMAGE_TAG:-latest}
+    container_name: pointlurker-frontend
+    hostname: frontend
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_started
+    networks:
+      - pointlurker-network
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/health"]
+      interval: 5s
+      retries: 3
+      timeout: 3s
+      start_period: 5s
+
+  proxy:
+    image: caddy:2.11-alpine
+    container_name: pointlurker-proxy
+    hostname: proxy
+    restart: unless-stopped
+    ports:
+      - "443:443"
+      - "443:443/udp"
+    configs:
+      - source: caddyfile
+        target: /etc/caddy/Caddyfile
+    depends_on:
+      frontend:
+        condition: service_healthy
+    networks:
+      - pointlurker-network
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:2019/config/"]
+      interval: 10s
+      retries: 3
+      timeout: 3s
+      start_period: 5s
+
+configs:
+  caddyfile:
+    content: |
+      {
+      	auto_https disable_redirects
+      	skip_install_trust
+      }
+
+      https://${PUBLIC_HOST:-localhost} {
+      	tls internal
+      	encode gzip
+      	reverse_proxy frontend:8080
+      }
+
+volumes:
+  postgres_data:
+  dataprotection_keys:
+  caddy_data:
+  caddy_config:
+
+networks:
+  pointlurker-network:
+    driver: bridge

@@ -1,0 +1,269 @@
+name: CD
+
+# This file's PATH, like the repository's, is part of the published provenance: keyless
+# cosign bakes both into the certificate identity, and docs/DEPLOYMENT.md tells consumers
+# to verify against "https://github.com/<owner>/<repo>/.github/workflows/cd.yml@refs/heads/main". Renaming it splits provenance across two
+# identities and breaks that command for anyone who already pulled an image. Restructuring
+# the jobs inside is safe — the identity keys on the file, not on job names.
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+      skip_build:
+        description: Re-enter at the security-scan stage using images already in the registry.
+        required: false
+        default: false
+        type: boolean
+    secrets:
+      SNYK_TOKEN:
+        required: true
+  # The second entry point is what earns this file its separation. It re-drives the tail of a
+  # release whose scan, signing or promotion failed, without a new commit and without
+  # rebuilding: the images are already pushed, and everything from `security-scan` onward
+  # works from the registry tags alone. Defaulting skip_build true is why it needs no CI
+  # artifacts,
+  # which expire after a day.
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Released version without the leading v, e.g. 1.2.3
+        required: true
+        type: string
+      skip_build:
+        description: Skip the build stage and start at security-scan (leave checked to re-drive a release)
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+env:
+  BACKEND_IMAGE: ghcr.io/luanholiv/pointlurker-backend
+  FRONTEND_IMAGE: ghcr.io/luanholiv/pointlurker-frontend
+  # Links each package to this repository on GHCR. The Dockerfile LABEL covers the
+  # per-arch images; a manifest list carries no config, so it needs the annotation.
+  IMAGE_SOURCE: https://github.com/${{ github.repository }}
+
+jobs:
+  # Stage 1 — produce. Only unsigned, arch-suffixed intermediates exist when this finishes,
+  # and the job holds no signing identity: contents: read, no id-token.
+  #
+  # One job with one QEMU/buildx setup rather than a matrix leg per image. Each leg would pay
+  # `Set up QEMU` at 15s to run a 14s build, spending more on setup than on work.
+  build:
+    if: ${{ !inputs.skip_build }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      - name: Download backend artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: backend-publish
+          path: backend-publish
+
+      # The bundle E2E actually exercised, rather than a fresh `npm ci && npm run build`
+      # here. Rebuilding produced an equivalent bundle only by accident — frontend/.env is
+      # untracked, so CI happens to build origin-relative either way — and it put an
+      # arbitrary third-party install inside the deployment workflow.
+      - name: Download frontend artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: frontend-dist
+          path: frontend-dist
+
+      - name: GHCR login
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+
+      # Arch-suffixed tags only. `:latest` is never pushed by a build — it moves in the
+      # publish stage, after the scan has passed and the digest has been signed.
+      - name: Build and push backend image (amd64)
+        run: |
+          docker buildx build \
+            --platform linux/amd64 \
+            --push \
+            -f backend/Dockerfile \
+            -t ${{ env.BACKEND_IMAGE }}:v${{ inputs.version }}-amd64 \
+            backend-publish
+
+      - name: Build and push backend image (arm64)
+        run: |
+          docker buildx build \
+            --platform linux/arm64 \
+            --push \
+            -f backend/Dockerfile \
+            -t ${{ env.BACKEND_IMAGE }}:v${{ inputs.version }}-arm64 \
+            backend-publish
+
+      - name: Build and push frontend image
+        run: |
+          mkdir -p frontend-build/dist
+          cp -r frontend-dist/* frontend-build/dist/
+          cp frontend/nginx.conf frontend-build/nginx.conf
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            --push \
+            --annotation "index:org.opencontainers.image.source=${{ env.IMAGE_SOURCE }}" \
+            -f frontend/Dockerfile \
+            -t ${{ env.FRONTEND_IMAGE }}:v${{ inputs.version }} \
+            frontend-build
+
+  # Stage 2 — gate. Its own job so a Snyk fault or the account-quota 403 does not also cost
+  # the build: two of the four failures observed while this pipeline was measured were this
+  # scan, and retrying one used to mean rebuilding and re-pushing every image.
+  security-scan:
+    needs: [build]
+    # A skipped `build` must NOT skip this — that is the whole workflow_dispatch path. A
+    # failed or cancelled one must.
+    if: ${{ always() && needs.build.result != 'failure' && needs.build.result != 'cancelled' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+
+    steps:
+      - name: Setup Snyk
+        uses: snyk/actions/setup@9adf32b1121593767fc3c057af55b55db032dc04 # v1
+        with:
+          # renovate: datasource=github-releases depName=snyk/cli
+          snyk-version: v1.1308.0
+
+      - name: Snyk container scan — backend (amd64)
+        run: snyk container test ${{ env.BACKEND_IMAGE }}:v${{ inputs.version }}-amd64 --severity-threshold=high
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Snyk container scan — frontend
+        run: snyk container test ${{ env.FRONTEND_IMAGE }}:v${{ inputs.version }} --severity-threshold=high
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  # Stage 3 — bless. The only job in the entire pipeline that holds id-token: write, and so
+  # the only one that can mint a Sigstore signing identity. Nothing here installs third-party
+  # code: the frontend build that used to run beside these steps now happens in CI.
+  publish:
+    needs: [security-scan]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+      id-token: write
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: GHCR login
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+
+      - name: Merge backend multi-arch manifest
+        run: |
+          docker buildx imagetools create \
+            --annotation "index:org.opencontainers.image.source=${{ env.IMAGE_SOURCE }}" \
+            -t ${{ env.BACKEND_IMAGE }}:v${{ inputs.version }} \
+            ${{ env.BACKEND_IMAGE }}:v${{ inputs.version }}-amd64 \
+            ${{ env.BACKEND_IMAGE }}:v${{ inputs.version }}-arm64
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac # v3
+
+      # Resolved from the tag rather than handed across the job boundary. The version tag is
+      # the contract between stages, so splitting this workflow into three jobs needed no
+      # output plumbing at all.
+      - name: Capture image digests
+        run: |
+          BACKEND_DIGEST=$(docker buildx imagetools inspect \
+            ${{ env.BACKEND_IMAGE }}:v${{ inputs.version }} \
+            --format '{{json .Manifest}}' | jq -r '.digest')
+          echo "BACKEND_REF=${{ env.BACKEND_IMAGE }}@${BACKEND_DIGEST}" >> "$GITHUB_ENV"
+          FRONTEND_DIGEST=$(docker buildx imagetools inspect \
+            ${{ env.FRONTEND_IMAGE }}:v${{ inputs.version }} \
+            --format '{{json .Manifest}}' | jq -r '.digest')
+          echo "FRONTEND_REF=${{ env.FRONTEND_IMAGE }}@${FRONTEND_DIGEST}" >> "$GITHUB_ENV"
+
+      - name: Sign backend image
+        run: cosign sign --yes ${{ env.BACKEND_REF }}
+
+      - name: Generate backend SBOM
+        uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610 # v0
+        with:
+          image: ${{ env.BACKEND_REF }}
+          output-file: backend-sbom.spdx.json
+          format: spdx-json
+
+      - name: Attest backend SBOM
+        run: cosign attest --yes --predicate backend-sbom.spdx.json --type spdxjson ${{ env.BACKEND_REF }}
+
+      - name: Sign frontend image
+        run: cosign sign --yes ${{ env.FRONTEND_REF }}
+
+      - name: Generate frontend SBOM
+        uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610 # v0
+        with:
+          image: ${{ env.FRONTEND_REF }}
+          output-file: frontend-sbom.spdx.json
+          format: spdx-json
+
+      - name: Attest frontend SBOM
+        run: cosign attest --yes --predicate frontend-sbom.spdx.json --type spdxjson ${{ env.FRONTEND_REF }}
+
+      # :latest is what a self-hoster runs by default, so it moves last — only
+      # once the scan has passed and the digest it will point at is signed and
+      # has an SBOM attested. Given a single manifest-list source, imagetools
+      # create is a carbon copy, so the tag lands on that same digest and is
+      # covered by the signature already made. The assertion is what keeps that
+      # true: if a future buildx ever resolves the tag elsewhere, this fails
+      # loudly instead of publishing an unsigned :latest.
+      - name: Promote :latest to the signed digests
+        run: |
+          promote() {
+            ref="$1"
+            image="${ref%@*}"
+            digest="${ref#*@}"
+            docker buildx imagetools create -t "${image}:latest" "$ref"
+            resolved=$(docker buildx imagetools inspect "${image}:latest" \
+              --format '{{json .Manifest}}' | jq -r '.digest')
+            if [ "$resolved" != "$digest" ]; then
+              echo "::error::${image}:latest resolves to ${resolved}, expected the signed ${digest}"
+              exit 1
+            fi
+          }
+          promote "${{ env.BACKEND_REF }}"
+          promote "${{ env.FRONTEND_REF }}"
+
+      - name: Upload SBOMs and publish release
+        run: |
+          gh release upload v${{ inputs.version }} backend-sbom.spdx.json frontend-sbom.spdx.json --clobber
+          gh release edit v${{ inputs.version }} --draft=false --latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

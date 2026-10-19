@@ -1,0 +1,568 @@
+{
+  "common": {
+    "cancel": "Cancelar",
+    "add": "Adicionar",
+    "remove": "Remover",
+    "brandName": "PointLurker",
+    "brandSub": "Console",
+    "workspace": "Área de trabalho",
+    "search": "Buscar",
+    "saving": "Salvando…",
+    "pts": "pts",
+    "clearFilters": "Limpar filtros"
+  },
+  "auth": {
+    "email": "E-mail",
+    "password": "Senha",
+    "loginButton": "Entrar",
+    "signInDescription": "Insira suas credenciais de admin para abrir o console de monitoramento.",
+    "authenticatorCode": "Código do autenticador",
+    "signingIn": "Entrando…",
+    "loadingStatus": "Carregando status de autenticação...",
+    "signInFailed": "Falha ao entrar",
+    "bootstrapLink": "Configurar admin →",
+    "bootstrapEyebrow": "Primeira execução · única vez",
+    "bootstrapDescription": "Nenhum usuário existe ainda. Crie a conta de admin — você pode alterar as credenciais depois.",
+    "emailPlaceholder": "voce@dominio.com",
+    "passwordPlaceholder": "Mínimo 12 caracteres",
+    "confirmNewPassword": "Confirmar nova senha",
+    "passwordsMismatch": "As senhas não coincidem",
+    "creating": "Criando…",
+    "createAdmin": "Criar admin",
+    "alreadyBootstrapped": "já configurado?",
+    "backToSignIn": "← Entrar",
+    "createAdminFailed": "Não foi possível criar a conta de admin"
+  },
+  "home": {
+    "workerOnline": "worker online",
+    "forceSync": "Forçar sincronização",
+    "title": "Console de",
+    "titleEm": "missão",
+    "unitSeconds": "s",
+    "deltaThisWeek": "+0 esta semana",
+    "deltaVsPrev": "+0 vs anterior",
+    "kpiStores": "Lojas monitoradas",
+    "kpiWishlist": "Itens na lista",
+    "kpiRedemptions": "Resgates · 24h",
+    "kpiSyncLatency": "Latência de sync",
+    "kpiAvailableCount": "{{count}} disponível agora",
+    "liveFeedEyebrow": "Feed ao vivo · ciclo de 4m",
+    "activityHeading": "Atividade",
+    "streaming": "transmitindo",
+    "noActivity": "Nenhuma atividade ainda — os jobs de sync aparecerão aqui.",
+    "nextCycleIn": "próximo ciclo em",
+    "lastCycle": "último ciclo",
+    "storesLabel": "lojas",
+    "newItems": "novos itens",
+    "autoRedeem": "auto-resgate",
+    "wishlistReady": "Lista · pronta",
+    "availableNow": "Disponível agora",
+    "noAvailableItems": "Nenhum item da lista disponível agora.",
+    "redeem": "Resgatar"
+  },
+  "navigation": {
+    "stores": "Lojas",
+    "wishlist": "Lista de desejos",
+    "redemptions": "Resgates",
+    "settings": "Configurações",
+    "menu": "Menu",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
+  },
+  "topbar": {
+    "skipToContent": "Ir para o conteúdo principal",
+    "getStarted": "Primeiros passos",
+    "switchToLight": "Mudar para modo claro",
+    "switchToDark": "Mudar para modo escuro"
+  },
+  "stores": {
+    "title": "Lojas",
+    "description": "Todas as lojas que esta instância monitora.",
+    "addButton": "Adicionar loja",
+    "searchPlaceholder": "Buscar lojas por nome ou ID…",
+    "searchAriaLabel": "Buscar lojas",
+    "loadMore": "Carregar mais",
+    "loadError": "Falha ao carregar lojas. Tente novamente.",
+    "createFailed": "Falha ao criar loja",
+    "loading": "Carregando lojas...",
+    "watchedLabel": "{{filtered}} / {{total}} monitoradas",
+    "active": "Ativa",
+    "paused": "Pausada",
+    "inactive": "Inativa",
+    "channelUsername": "Nome do canal",
+    "lookup": "Buscar",
+    "lookingUp": "Buscando...",
+    "pause": "Pausar",
+    "resume": "Retomar",
+    "viewItems": "Ver itens",
+    "itemCount_one": "{{count}} item",
+    "itemCount_other": "{{count}} itens",
+    "syncLabel": "SINC",
+    "foundPill": "encontrado",
+    "addDialog": {
+      "eyebrow": "01 · ADICIONAR LOJA",
+      "titleEm": "loja",
+      "usernamePlaceholder": "ex.: xqc",
+      "description": "Digite o nome de usuário do canal no StreamElements. Vamos verificar e buscar a lista de itens atual.",
+      "continue": "Continuar →",
+      "descriptionFixed": "{{provider}} é uma loja única. Vamos verificar se ela está acessível e buscar a lista atual de itens.",
+      "credentialMissing": "Adicione primeiro sua credencial do {{provider}} nas Configurações.",
+      "alreadyAdded": "{{provider}} já está sendo monitorada.",
+      "storeId": "id · {{id}}"
+    },
+    "backToStores": "Voltar para Lojas",
+    "filterAll": "Todas",
+    "filterActive": "Ativas",
+    "filterPaused": "Pausadas",
+    "detailLoading": "Carregando loja...",
+    "detailNotFound": "Loja não encontrada.",
+    "detailLoadError": "Falha ao carregar loja.",
+    "tabs": {
+      "items": "Itens",
+      "profile": "Perfil",
+      "attention": "Perfil precisa de atenção"
+    },
+    "toast": {
+      "pausedKicker": "Pausada",
+      "pausedMsg": "Loja pausada",
+      "resumedKicker": "Retomada",
+      "resumedMsg": "Loja retomada",
+      "removedKicker": "Removida",
+      "removedMsg": "Loja removida",
+      "errorKicker": "Erro",
+      "toggleError": "Falha ao atualizar status da loja",
+      "removeError": "Falha ao remover loja"
+    },
+    "missingLabels": {
+      "eyebrow": "01 · LOJA CRIADA",
+      "title": "Preencher",
+      "titleEm": "perfil da loja",
+      "description_one": "{{storeName}} tem {{count}} rótulo de entrada sem valor armazenado. O auto-resgate bloqueará itens que exigem este rótulo até que seja preenchido.",
+      "description_other": "{{storeName}} tem {{count}} rótulos de entrada sem valores armazenados. O auto-resgate bloqueará itens que exigem esses rótulos até que sejam preenchidos.",
+      "skip": "Pular por agora",
+      "saveProfile": "Salvar perfil",
+      "saveFailed": "Falha ao salvar"
+    },
+    "profile": {
+      "loading": "Carregando perfil...",
+      "loadError": "Falha ao carregar perfil da loja.",
+      "title": "Perfil de entradas da loja",
+      "updated": "atualizado em {{date}}",
+      "replacePlaceholder": "(substituir valor armazenado)",
+      "valuePlaceholder": "Valor a armazenar",
+      "setValue": "Definir um valor",
+      "mapToExisting": "Mapear para existente",
+      "selectCanonical": "— Selecionar rótulo canônico —",
+      "save": "Salvar perfil",
+      "saveFailed": "Falha ao salvar.",
+      "pill": {
+        "resolved": "resolvido",
+        "needsValue": "precisa de valor",
+        "notRequested": "nenhum item pede isto"
+      },
+      "requestedByItems_one": "pedido por {{count}} item",
+      "requestedByItems_other": "pedido por {{count}} itens",
+      "blocksEntries_one": "bloqueia {{count}} resgate automático",
+      "blocksEntries_other": "bloqueia {{count}} resgates automáticos",
+      "bestMatch": "melhor correspondência: {{canonical}} ({{score}}%)",
+      "aliasedToValueless": "mapeado para \"{{canonical}}\" — esse rótulo ainda não tem valor",
+      "fedByLabel": "alimentado por",
+      "sourceExact": "exato",
+      "sourceAlias": "apelido",
+      "sourceFuzzy": "aproximado {{score}}%",
+      "deleteValue": "Excluir",
+      "deleteAlias": "Remover o apelido {{label}}",
+      "deleteSoftWarning_one": "{{count}} rótulo resolve para cá — excluir pode deixá-lo não resolvido.",
+      "deleteSoftWarning_other": "{{count}} rótulos resolvem para cá — excluir pode deixá-los não resolvidos.",
+      "deleteConfirm": "Excluir valor",
+      "deleteCancel": "Cancelar",
+      "deleteFailed": "Falha ao excluir.",
+      "rawLabelField": "Rótulo detectado",
+      "canonicalField": "Rótulo canônico",
+      "empty": {
+        "title": "Nenhum rótulo de entrada",
+        "body": "Nenhum item desta loja pede informação extra, como um link de troca da Steam, então não há nada para preencher."
+      }
+    },
+    "filters": {
+      "searchPlaceholder": "Buscar itens...",
+      "searchAriaLabel": "Buscar itens",
+      "available": "Disponível",
+      "subscriberOnly": "Só sub",
+      "featured": "Destaque",
+      "categories": "Categorias",
+      "categoryAriaLabel": "Filtro de categoria",
+      "minPts": "Pts mín",
+      "maxPts": "Pts máx",
+      "minCostAriaLabel": "Custo mínimo",
+      "maxCostAriaLabel": "Custo máximo",
+      "sortBy": "Ordenar por",
+      "sortFieldAriaLabel": "Campo de ordenação",
+      "sortDirAriaLabel": "Direção de ordenação",
+      "activeFiltersAriaLabel": "Filtros ativos",
+      "removeFilterAriaLabel": "Remover filtro {{label}}",
+      "sortRelevance": "Relevância",
+      "sortName": "Nome",
+      "sortCost": "Custo",
+      "sortStock": "Estoque",
+      "sortDate": "Data de adição",
+      "sortAsc": "Crescente",
+      "sortDesc": "Decrescente",
+      "showingUnavailable": "Mostrando indisponíveis",
+      "minFilter": "Mín: {{value}}",
+      "maxFilter": "Máx: {{value}}",
+      "sortFilter": "Ordem: {{label}}",
+      "resetAll": "Resetar tudo"
+    },
+    "channelId": "ID do canal",
+    "displayName": "Nome da loja",
+    "configureCredential": "Adicione uma credencial de loja nas Configurações para adicionar lojas.",
+    "provider": "Provedor",
+    "empty": {
+      "title": "Nenhuma loja ainda",
+      "body": "Adicione uma loja StreamElements ou GauPoints e o monitor verifica itens novos e reabastecidos a cada sincronização.",
+      "bodyNoCredential": "Conecte uma conta StreamElements ou GauPoints nas Configurações e depois adicione a loja que quer acompanhar.",
+      "openSettings": "Abrir Configurações"
+    },
+    "emptyFiltered": {
+      "title": "Nenhuma loja encontrada",
+      "body": "Nada corresponde à busca e aos filtros atuais."
+    },
+    "noItems": {
+      "title": "Esta loja não tem itens",
+      "body": "A última sincronização encontrou o catálogo vazio. A próxima sincronização verifica de novo."
+    },
+    "itemsFiltered": {
+      "title": "Nenhum item encontrado",
+      "body": "Nada nesta loja corresponde à busca e aos filtros atuais."
+    }
+  },
+  "item": {
+    "available": "Disponível",
+    "unavailable": "Indisponível",
+    "stock": "Estoque: {{current}} / {{total}}",
+    "subOnly": "Só sub"
+  },
+  "wishlist": {
+    "title": "Lista de desejos",
+    "description": "Acompanhe itens que planeja resgatar quando ficarem disponíveis.",
+    "add": "Adicionar à lista",
+    "addFailed": "Falha ao adicionar à lista de desejos",
+    "updateFailed": "Falha ao atualizar item da lista de desejos",
+    "wishlisted": "Na lista",
+    "remove": "Remover",
+    "edit": "Editar",
+    "autoRedeem": "Resgatar automaticamente",
+    "notify": "Notificar",
+    "notifyOnAvailable": "Notificar quando disponível",
+    "autoRedeemWhenAvailable": "Resgatar automaticamente quando disponível",
+    "desiredRedemptions": "Quantos resgatar",
+    "desiredRedemptionsHint": "O resgate automático para depois dessa quantidade. Cada um gasta pontos.",
+    "desiredRedemptionsUnlimited": "Sem limite",
+    "desiredRedemptionsUnlimitedHint": "O resgate automático continua enquanto houver pontos.",
+    "quotaProgress": "{{used}} de {{desired}} resgatados",
+    "quotaProgressUnlimited": "{{used}} resgatados, sem limite",
+    "quotaReached": "Limite atingido",
+    "redemptionMessage": "Mensagem de resgate (opcional)",
+    "searchPlaceholder": "Buscar itens da lista…",
+    "searchAriaLabel": "Buscar itens da lista",
+    "available": "Disponível",
+    "unavailable": "Indisponível",
+    "saving": "Salvando...",
+    "saveChanges": "Salvar alterações",
+    "addToWishlist": "Adicionar à lista",
+    "blocked": "Bloqueado: valores de perfil ausentes para {{labels}}.",
+    "fillProfile": "Preencher perfil",
+    "autoRedeemBlocked": "Auto-resgate bloqueado.",
+    "autoRedeemBlockedDetail": "Perfil da loja com valores ausentes para: {{labels}}.",
+    "autoRedeemBlockedAction": "Abra o perfil da loja para preenchê-los.",
+    "loading": "Carregando lista...",
+    "loadError": "Falha ao carregar lista de desejos.",
+    "synced": "Sincronizado em {{date}}",
+    "modal": {
+      "addEyebrow": "02 · LISTA DE DESEJOS",
+      "editTitle": "Editar",
+      "editTitleEm": "item",
+      "addTitle": "Adicionar à",
+      "addTitleEm": "lista",
+      "description": "{{name}} — {{cost}} pts"
+    },
+    "toast": {
+      "errorKicker": "Erro",
+      "loadEntryError": "Falha ao carregar item da lista de desejos",
+      "removeError": "Falha ao remover item da lista de desejos"
+    },
+    "storeItem": "Item",
+    "empty": {
+      "title": "Sua lista de desejos está vazia",
+      "body": "Adicione itens a partir de uma loja. Você recebe um e-mail quando um deles volta ao estoque, e o resgate automático pode resgatá-lo para você.",
+      "cta": "Ver lojas"
+    },
+    "searchEmpty": {
+      "title": "Nenhum item da lista encontrado",
+      "body": "Nada na sua lista de desejos corresponde a “{{query}}”.",
+      "cta": "Limpar busca"
+    }
+  },
+  "redemption": {
+    "title": "Resgates",
+    "description": "Acompanhe o ciclo de vida dos seus resgates na loja.",
+    "results_one": "{{count}} resultado",
+    "results_other": "{{count}} resultados",
+    "loading": "Carregando resgates...",
+    "loadError": "Falha ao carregar resgates.",
+    "retry": "Tentar novamente",
+    "pagination": "{{from}}–{{to}} de {{total}}",
+    "noResultsPagination": "Sem resultados",
+    "previous": "Anterior",
+    "next": "Próximo",
+    "status": {
+      "Pending": "Pendente",
+      "Submitted": "Enviado",
+      "Completed": "Concluído",
+      "SubmissionFailed": "Falhou",
+      "CompletionTimedOut": "Expirado",
+      "Rejected": "Recusado"
+    },
+    "columns": {
+      "status": "Status",
+      "item": "Item",
+      "store": "Loja",
+      "attempted": "Tentativa",
+      "submitted": "Enviado",
+      "completed": "Concluído",
+      "reason": "Motivo"
+    },
+    "filter": {
+      "from": "De",
+      "to": "Até",
+      "fromAriaLabel": "Data inicial",
+      "toAriaLabel": "Data final",
+      "allChip": "Todos",
+      "successChip": "Concluído",
+      "failedChip": "Falhou",
+      "pendingChip": "Pendente",
+      "submittedChip": "Enviado"
+    },
+    "statusCheckFailing_one": "Falha ao verificar status ({{count}} tentativa)",
+    "statusCheckFailing_other": "Falha ao verificar status ({{count}} tentativas)",
+    "empty": {
+      "title": "Nenhum resgate ainda",
+      "body": "Quando o resgate automático resgata um item da lista de desejos, o resgate e o status dele aparecem aqui.",
+      "cta": "Abrir lista de desejos"
+    },
+    "emptyFiltered": {
+      "title": "Nenhum resgate encontrado",
+      "body": "Nada corresponde aos filtros de status e data atuais."
+    }
+  },
+  "settings": {
+    "title": "Configurações",
+    "description": "Gerencie sua conta, integrações e segurança.",
+    "account": "Conta",
+    "credentialsTab": "Credenciais das lojas",
+    "security": "Segurança",
+    "identity": "Identidade",
+    "userId": "ID do usuário",
+    "credentialConfigured": "Configurado",
+    "credentialNotSet": "Não definido",
+    "jwtTokenLabel": "Token JWT",
+    "jwtTokenPlaceholder": "Cole seu token JWT aqui...",
+    "saveToken": "Salvar token",
+    "savingToken": "Salvando...",
+    "clearToken": "Remover token",
+    "tokenSaved": "Token atualizado.",
+    "saveTokenFailed": "Falha ao salvar token",
+    "clearTokenFailed": "Falha ao remover token",
+    "changePasswordHeading": "Alterar senha",
+    "currentPassword": "Senha atual",
+    "newPassword": "Nova senha",
+    "confirmNewPassword": "Confirmar nova senha",
+    "passwordsMismatch": "As senhas não coincidem",
+    "updateFailed": "Falha na atualização",
+    "passwordSaved": "Senha atualizada.",
+    "updatePassword": "Atualizar senha",
+    "savingPassword": "Salvando…",
+    "authenticator": "Autenticador",
+    "twoFactorHeading": "Autenticação de dois fatores",
+    "twoFactorEnabled": "Dois fatores está ativado.",
+    "disable2FA": "Desativar",
+    "enable2FA": "Ativar dois fatores",
+    "scanKey": "Escaneie esta chave no seu app autenticador.",
+    "orEnterKey": "Ou digite esta chave manualmente.",
+    "verificationCode": "Código de verificação",
+    "verifyAndEnable": "Verificar e ativar",
+    "enable2FAFailed": "Falha ao iniciar a configuração de dois fatores",
+    "verify2FAFailed": "Falha ao verificar o código",
+    "disable2FAFailed": "Falha ao desativar a autenticação de dois fatores",
+    "disable2FAConfirmTitle": "Desativar a autenticação de dois fatores?",
+    "disable2FAConfirmBody": "Seu app autenticador deixa de funcionar e a chave dele é revogada. Para reativar os dois fatores depois, será preciso escanear um novo código.",
+    "disable2FAConfirmAction": "Desativar",
+    "recoveryCodesHeading": "Códigos de recuperação",
+    "recoveryCodesIntro": "Guarde estes códigos em um lugar seguro. Cada um permite entrar uma única vez caso você perca o autenticador, e eles aparecem somente agora.",
+    "recoveryCodesAcknowledge": "Salvei os códigos",
+    "sessionsHeading": "Sessões",
+    "sessionsDescription": "Sair de todas as sessões ativas em todos os dispositivos.",
+    "revokeAllSessions": "Revogar todas as sessões",
+    "language": "Idioma",
+    "changeLocale": "Alterar idioma",
+    "localeSaved": "Idioma atualizado",
+    "localeError": "Falha ao atualizar idioma",
+    "streamElements": {
+      "howTo": "Entre em streamelements.com, abra a aba Channels da sua conta (streamelements.com/dashboard/account/channels), ative Show secrets e copie o JWT token. Ele dá acesso total ao seu canal, então não o compartilhe."
+    },
+    "gauPoints": {
+      "notSet": "Não definido",
+      "configured": "Configurado",
+      "expired": "Expirado",
+      "refused": "Recusado",
+      "howTo": "Entre em gaupoints.com.br, abra as ferramentas de desenvolvedor do navegador e copie o valor do cookie kp_session. Ele dura sete dias; você recebe um e-mail antes de ele expirar.",
+      "account": "Conectado como {{account}}",
+      "expiresAt": "Expira em {{when}}",
+      "expiredAt": "Expirou em {{when}}",
+      "label": "Cookie kp_session",
+      "placeholder": "Cole o valor do kp_session",
+      "saved": "Sessão salva.",
+      "save": "Salvar sessão",
+      "clear": "Limpar sessão"
+    }
+  },
+  "errors": {
+    "validation": {
+      "failed": "Um ou mais erros de validação ocorreram.",
+      "required": "Este campo é obrigatório.",
+      "too_long": "Valor muito longo (máximo de {{max}} caracteres).",
+      "too_short": "Valor muito curto (mínimo de {{min}} caracteres).",
+      "out_of_range": "O valor deve estar entre {{min}} e {{max}}.",
+      "invalid_format": "Formato inválido.",
+      "password_too_short": "A senha deve ter pelo menos {{min}} caracteres.",
+      "password_requires_digit": "A senha deve conter pelo menos um número.",
+      "password_requires_upper": "A senha deve conter pelo menos uma letra maiúscula.",
+      "password_requires_lower": "A senha deve conter pelo menos uma letra minúscula.",
+      "password_requires_non_alphanumeric": "A senha deve conter pelo menos um caractere especial.",
+      "password_requires_unique_chars": "A senha deve conter pelo menos {{min}} caracteres únicos.",
+      "password_mismatch": "As senhas não coincidem.",
+      "duplicate_user_name": "Nome de usuário '{{userName}}' já está em uso.",
+      "invalid_user_name": "Nome de usuário '{{userName}}' é inválido.",
+      "duplicate_email": "E-mail '{{email}}' já está cadastrado.",
+      "invalid_email": "E-mail '{{email}}' é inválido."
+    },
+    "request": {
+      "malformed_body": "Não foi possível ler a requisição. Tente novamente.",
+      "body_too_large": "A requisição é muito grande."
+    },
+    "search": {
+      "invalid_enum_value": "'{{value}}' não é um valor válido para '{{parameter}}'.",
+      "invalid_filter_value": "'{{value}}' não é um valor válido para '{{parameter}}'."
+    },
+    "users": {
+      "not_found": "Usuário não encontrado.",
+      "register_already_exists": "Já existe uma conta cadastrada.",
+      "locale_unsupported": "Idioma '{{locale}}' não é suportado."
+    },
+    "auth": {
+      "unauthorized": "Credenciais inválidas.",
+      "two_factor_required": "Código de autenticação de dois fatores necessário.",
+      "two_factor_invalid": "Código de autenticação de dois fatores inválido.",
+      "provider_credential_not_configured": "Adicione a credencial deste provedor nas Configurações antes de adicionar a loja dele."
+    },
+    "credentials": {
+      "secret_required": "Uma credencial é obrigatória.",
+      "rejected": "O provedor não aceitou esta credencial. Verifique-a e tente novamente.",
+      "provider_unsupported": "Não é possível armazenar credenciais para '{{provider}}'.",
+      "expired": "A credencial já expirou. Copie uma nova e tente novamente."
+    },
+    "stores": {
+      "not_found": "Loja não encontrada.",
+      "already_exists": "Já existe uma loja para o canal '{{channelId}}'.",
+      "provider_unsupported": "Não é possível adicionar lojas deste provedor.",
+      "identity_not_accepted": "A loja deste provedor é identificada pelo servidor, não pela requisição."
+    },
+    "wishlist": {
+      "entry_not_found": "Item da lista de desejos não encontrado.",
+      "item_not_found": "Item da loja não encontrado.",
+      "already_exists": "Este item já está na sua lista de desejos.",
+      "missing_input_coverage": "Entradas obrigatórias ausentes: {{missingLabels}}.",
+      "messages_not_supported": "Este item não aceita mensagem de resgate."
+    },
+    "store_lookup": {
+      "query_required": "Digite o nome de um canal para buscar.",
+      "not_found": "Nenhuma loja encontrada para '{{query}}'."
+    },
+    "provider_api": {
+      "unreachable": "O provedor da loja está inacessível. Tente novamente mais tarde.",
+      "fetch_failed": "O provedor da loja respondeu com um erro. Tente novamente mais tarde."
+    },
+    "redemption": {
+      "failure": {
+        "unknown": "Falha desconhecida.",
+        "token_decryption_failed": "Falha na descriptografia do token.",
+        "input_coverage_lost": "Cobertura de entrada perdida.",
+        "input_decryption_failed": "Falha na descriptografia da entrada.",
+        "provider_api_bad_request": "A loja rejeitou a solicitação.",
+        "provider_api_unauthorized": "A loja não aceitou sua credencial.",
+        "provider_api_forbidden": "A loja recusou o acesso.",
+        "provider_api_not_found": "A loja não tem mais este item.",
+        "provider_api_server_error": "A loja teve um erro interno.",
+        "insufficient_points": "Pontos insuficientes para resgatar este item.",
+        "provider_rejected": "A loja recusou o resgate.",
+        "credential_expired": "Sua credencial da loja havia expirado, então o resgate não foi enviado."
+      }
+    },
+    "system": {
+      "internal_error": "Ocorreu um erro inesperado.",
+      "upstream_unavailable": "Um serviço externo está indisponível."
+    }
+  },
+  "validation": {
+    "fieldMessage": "{{label}}: {{message}}"
+  },
+  "providers": {
+    "streamelements": "StreamElements",
+    "gaupoints": "GauPoints"
+  },
+  "onboarding": {
+    "title": "Primeiros passos",
+    "description": "Três passos e o PointLurker começa a vigiar as lojas de pontos por você.",
+    "progress": "{{done}} de {{total}} concluídos",
+    "done": "Concluído",
+    "optional": "Opcional",
+    "steps": {
+      "credential": {
+        "title": "Conecte um provedor",
+        "body": "Cole seu JWT token do StreamElements ou o cookie de sessão do GauPoints. As configurações mostram onde encontrar cada um.",
+        "cta": "Abrir credenciais"
+      },
+      "store": {
+        "title": "Adicione uma loja",
+        "body": "Escolha a loja de pontos que você quer vigiar. Ela é verificada a cada sincronização em busca de itens novos e reabastecidos.",
+        "cta": "Adicionar loja"
+      },
+      "wishlist": {
+        "title": "Adicione um item à lista de desejos",
+        "body": "Abra uma loja e adicione o que você quer. Você recebe um e-mail quando o item voltar ao estoque.",
+        "cta": "Ver lojas"
+      },
+      "autoRedeem": {
+        "title": "Ative o resgate automático",
+        "body": "Com um item na lista de desejos, o resgate automático pode resgatá-lo assim que ficar disponível. Itens que pedem dados extras, como um link de troca da Steam, os buscam no perfil da loja.",
+        "cta": "Abrir lista de desejos"
+      }
+    },
+    "widget": {
+      "label": "Concluir configuração",
+      "count": "{{done}}/{{total}}",
+      "progressLabel": "Progresso da configuração",
+      "complete": "Configuração concluída"
+    },
+    "complete": {
+      "title": "Tudo pronto",
+      "body": "O PointLurker está vigiando suas lojas e envia um e-mail quando um item da lista de desejos estiver disponível.",
+      "finish": "Concluir configuração"
+    },
+    "toast": {
+      "kicker": "Configuração concluída",
+      "msg": "O PointLurker está vigiando suas lojas."
+    }
+  }
+}

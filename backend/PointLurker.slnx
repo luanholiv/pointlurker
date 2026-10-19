@@ -1,0 +1,24 @@
+<Solution>
+  <PropertyGroup>
+    <Name>PointLurker</Name>
+    <Guid>00000000-0000-0000-0000-000000000001</Guid>
+  </PropertyGroup>
+  <Projects></Projects>
+  <Folder Name="/src/">
+    <Project Path="src/Core.Application/Core.Application.csproj" />
+    <Project Path="src/Core.Domain/Core.Domain.csproj" />
+    <Project Path="src/Infrastructure.Database/Infrastructure.Database.csproj" />
+    <Project Path="src/Infrastructure.ExternalServices/Infrastructure.ExternalServices.csproj" />
+    <Project Path="src/Presentation.WebApi/Presentation.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Architecture.Tests/Architecture.Tests.csproj" />
+    <Project Path="tests/Core.Application.UnitTests/Core.Application.UnitTests.csproj" />
+    <Project Path="tests/Core.Domain.UnitTests/Core.Domain.UnitTests.csproj" />
+    <Project Path="tests/Infrastructure.Database.UnitTests/Infrastructure.Database.UnitTests.csproj" />
+    <Project Path="tests/Infrastructure.ExternalServices.UnitTests/Infrastructure.ExternalServices.UnitTests.csproj" />
+    <Project Path="tests/IntegrationTests/IntegrationTests.csproj" />
+    <Project Path="tests/Presentation.WebApi.UnitTests/Presentation.WebApi.UnitTests.csproj" />
+    <Project Path="tests/Infrastructure.ExternalServices.ContractTests/Infrastructure.ExternalServices.ContractTests.csproj" />
+  </Folder>
+</Solution>

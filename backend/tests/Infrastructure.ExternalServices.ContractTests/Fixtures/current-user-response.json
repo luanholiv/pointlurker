@@ -1,0 +1,33 @@
+{
+  "_id": "5fa01b672173798fc06aa7f6",
+  "suspended": false,
+  "teams": [],
+  "channels": [
+    {
+      "profile": {
+        "title": "luanholiv's profile",
+        "headerImage": "https://cdn.streamelements.com/static/user/profile_header_default.png"
+      },
+      "_id": "5fa01b6721737924e36aa7f7",
+      "provider": "twitch",
+      "broadcasterType": "",
+      "suspended": false,
+      "providerId": "506188571",
+      "email": "you@example.com",
+      "avatar": "https://static-cdn.jtvnw.net/jtv_user_pictures/b998defd-863b-4ea7-913c-f96e91af7ce8-profile_image-300x300.png",
+      "type": "streamer",
+      "username": "luanholiv",
+      "alias": "luanholiv",
+      "displayName": "luanholiv",
+      "createdAt": "2020-11-02T14:44:55.381Z",
+      "updatedAt": "2026-06-02T15:07:47.910Z",
+      "country": "BR",
+      "role": "owner"
+    }
+  ],
+  "primaryChannel": "5fa01b6721737924e36aa7f7",
+  "username": "luanholiv",
+  "avatar": "https://static-cdn.jtvnw.net/user-default-pictures-uv/75305d54-c7cc-40d1-bb9c-91fbe85943c7-profile_image-300x300.png",
+  "createdAt": "2020-11-02T14:44:55.390Z",
+  "updatedAt": "2020-11-02T14:44:55.390Z"
+}

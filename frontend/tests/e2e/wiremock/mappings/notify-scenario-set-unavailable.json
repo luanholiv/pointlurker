@@ -1,0 +1,14 @@
+{
+  "priority": 1,
+  "scenarioName": "notify-availability",
+  "newScenarioState": "Started",
+  "request": {
+    "method": "GET",
+    "urlPath": "/kappa/v2/channels/e2e_notify_set_unavailable"
+  },
+  "response": {
+    "status": 404,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": { "error": "Not Found", "statusCode": 404 }
+  }
+}

@@ -1,0 +1,658 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Pull requests cancel freely — a superseded review run is waste. Pushes to main do not:
+  # every ref on main shares one group, so a second merge would otherwise cancel the first
+  # run, and that run may be inside `cd`, between the image push and the `:latest`
+  # promotion. That leaves unsigned arch tags published and the release stuck in draft.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  # No path filter and no `if:`: a secret can land in any file, so this is one of the two jobs
+  # in the workflow that always runs. It is a plain CLI call rather than gitleaks/gitleaks-action —
+  # that action resolves its binary to whatever is latest at run time unless pinned, needs a
+  # GITHUB_TOKEN for its octokit calls, defaults its PR commenting on (wanting
+  # pull-requests: write on a job that needs only contents: read), and drives the
+  # deprecated `detect` subcommand.
+  gitleaks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          # gitleaks reads commit patches, so the gate is only as deep as the clone. A
+          # shallow checkout would scan the tip and call the rest of history clean.
+          fetch-depth: 0
+          # Nothing here pushes, so the token does not belong in .git/config.
+          persist-credentials: false
+
+      - name: Setup Gitleaks
+        env:
+          # renovate: datasource=github-releases depName=gitleaks/gitleaks
+          GITLEAKS_VERSION: v8.30.1
+        # Same second-hop problem as the Snyk pin: a version left unset resolves to whatever
+        # is current at run time. The release path carries the leading v and the asset
+        # filename does not, which is why the pin keeps it and the URL strips it.
+        run: |
+          set -euo pipefail
+          curl -fsSL "https://github.com/gitleaks/gitleaks/releases/download/${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION#v}_linux_x64.tar.gz" \
+            | sudo tar -xz -C /usr/local/bin gitleaks
+          gitleaks version
+
+      - name: Gitleaks secret scan
+        # `git`, not `dir`: a secret that was committed and later deleted is still leaked,
+        # and only the commit patches carry it. --redact keeps the value out of the run log
+        # while rule, file, line and commit still print.
+        run: gitleaks git . --redact --verbose --no-banner
+
+  # No path filter and no `if:`, for the same reason as the scan above: the two Dockerfiles
+  # sit in different path filters, so a job behind either would be blind to single-stack PRs.
+  # Unlike the Snyk and gitleaks pins there is no second hop to close — hadolint-action is a
+  # docker action whose own Dockerfile pins ghcr.io/hadolint/hadolint by digest, so the ref
+  # below fixes the linter binary too. No config file: the default `info` failure threshold
+  # is what makes the info-level rules a gate, and an ignore list would only bank the debt.
+  hadolint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          # Nothing here pushes, so the token does not belong in .git/config.
+          persist-credentials: false
+
+      - name: Lint backend Dockerfile
+        uses: hadolint/hadolint-action@06be81baf89a55ffd0e24b8f04a4185738dd3387 # v3
+        with:
+          dockerfile: backend/Dockerfile
+
+      # One action call takes one Dockerfile. `!cancelled()` so a finding in the backend file
+      # still reports the frontend's, instead of hiding it behind the failed step above.
+      - name: Lint frontend Dockerfile
+        if: ${{ !cancelled() }}
+        uses: hadolint/hadolint-action@06be81baf89a55ffd0e24b8f04a4185738dd3387 # v3
+        with:
+          dockerfile: frontend/Dockerfile
+
+  path-filter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read # paths-filter lists the PR's changed files via the API
+    outputs:
+      backend: ${{ steps.filter.outputs.backend }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: dorny/paths-filter@0e4a8c6effa4802afeda77dc8d303f8176d7dfad # v3
+        id: filter
+        with:
+          # This workflow now holds every job, so a change to it re-verifies both stacks
+          # rather than only the one whose called file moved. That is the cost of merging
+          # the reusable workflows away, and it is the correct direction: a pipeline change
+          # can break either stack.
+          filters: |
+            backend:
+              - 'backend/**'
+              - '.github/workflows/ci.yml'
+            frontend:
+              - 'frontend/**'
+              - '.github/workflows/ci.yml'
+
+  # Every `if:` below is at STEP level, never job level. A skipped job skips its dependents,
+  # and `release` needs this one — a job-level guard would silently skip the release on any
+  # change that did not touch the backend.
+  backend:
+    needs: path-filter
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          global-json-file: backend/global.json
+
+      # No NuGet cache here. Restoring it cost 33-36s and saving it another ~37s to protect a
+      # `dotnet restore` that runs in 10-14s, while three copies of it filled 6.4 GB of the
+      # repository's 10 GB cache quota and evicted the Playwright cache that actually pays.
+      - name: Restore dependencies
+        run: dotnet restore
+        working-directory: backend
+
+      - name: Restore .NET tools
+        run: dotnet tool restore
+        working-directory: backend
+
+      - name: CSharpier format check
+        if: needs.path-filter.outputs.backend == 'true'
+        run: dotnet csharpier check .
+        working-directory: backend
+
+      - name: Slopwatch analysis
+        if: needs.path-filter.outputs.backend == 'true'
+        # Runs the version pinned in backend/.config/dotnet-tools.json, already
+        # restored above — same invocation as the pre-commit hook. A global
+        # `dotnet tool install` here would resolve to whatever is current on
+        # nuget.org and shadow the pinned tool, putting unpinned third-party
+        # code ahead of the publish step whose artifact becomes the shipped
+        # backend image.
+        run: dotnet tool run slopwatch analyze -d . --fail-on warning
+        working-directory: backend
+
+      - name: Run tests with coverage
+        if: needs.path-filter.outputs.backend == 'true'
+        run: dotnet test --no-restore --filter "Category!=LiveProbe&Category!=LiveProbeWrite" --collect:"XPlat Code Coverage" --results-directory ./test-results --logger "junit;LogFileName={assembly}.xml" --settings coverage.runsettings
+        working-directory: backend
+
+      - name: Generate coverage report
+        if: needs.path-filter.outputs.backend == 'true'
+        run: dotnet tool run reportgenerator -reports:./test-results/**/coverage.cobertura.xml -targetdir:./test-results/coverage-report -reporttypes:HtmlInline_AzurePipelines
+        working-directory: backend
+
+      - name: Upload test results
+        if: needs.path-filter.outputs.backend == 'true'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: test-results-backend
+          path: backend/test-results/
+          retention-days: 3
+
+      - name: Upload coverage to Codecov
+        if: needs.path-filter.outputs.backend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
+        uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238 # v4
+        with:
+          directory: backend/test-results
+          flags: backend
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      # Unconditional: `e2e-tests` and `cd` consume this artifact whether or not backend
+      # code changed, so it has to exist on every run.
+      - name: Publish (amd64)
+        run: |
+          dotnet publish src/Presentation.WebApi/Presentation.WebApi.csproj \
+            -c Release \
+            --self-contained true \
+            -r linux-musl-x64 \
+            -p:PublishSingleFile=true \
+            -p:IncludeNativeLibrariesForSelfExtract=true \
+            -p:EnableCompressionInSingleFile=true \
+            -o ./publish/amd64
+        working-directory: backend
+
+      - name: Publish (arm64)
+        run: |
+          dotnet publish src/Presentation.WebApi/Presentation.WebApi.csproj \
+            -c Release \
+            --self-contained true \
+            -r linux-musl-arm64 \
+            -p:PublishSingleFile=true \
+            -p:IncludeNativeLibrariesForSelfExtract=true \
+            -p:EnableCompressionInSingleFile=true \
+            -o ./publish/arm64
+        working-directory: backend
+
+      - name: Upload publish artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: backend-publish
+          path: backend/publish/
+          retention-days: 1
+
+  frontend:
+    needs: path-filter
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Format check
+        if: needs.path-filter.outputs.frontend == 'true'
+        run: npm run format:check
+
+      - name: Lint
+        if: needs.path-filter.outputs.frontend == 'true'
+        run: npm run lint
+
+      - name: Type check
+        if: needs.path-filter.outputs.frontend == 'true'
+        # `tsc -b`, NOT `tsc --noEmit`: the root tsconfig is a project-references
+        # solution ({files:[], references:[...]}), so `--noEmit` checks nothing and
+        # silently passes. `-b` traverses tsconfig.app/node and actually type-checks.
+        run: npx tsc -b
+
+      - name: Run tests
+        if: needs.path-filter.outputs.frontend == 'true'
+        run: npm run test -- --coverage --reporter=default --reporter=junit --outputFile.junit=test-results/junit.xml
+
+      - name: Upload test results
+        if: needs.path-filter.outputs.frontend == 'true'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: test-results-frontend
+          path: |
+            frontend/test-results/
+            frontend/coverage/
+          retention-days: 3
+
+      - name: Upload coverage to Codecov
+        if: needs.path-filter.outputs.frontend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
+        uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238 # v4
+        with:
+          directory: frontend/coverage
+          flags: frontend
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      # Unconditional, like the backend publish above: `ui-tests`, `e2e-tests` and `cd` all
+      # consume this artifact regardless of what changed.
+      - name: Build
+        run: npm run build
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: frontend-dist
+          path: frontend/dist/
+          retention-days: 1
+
+  # One job for both stacks rather than one per stack. They share a tool, a token and a
+  # failure mode — the account-quota 403 this repository hits periodically fails both at
+  # once, and one red check is better signal than two saying the same thing. Per-job billing
+  # also rounds up to the minute, so two short jobs cost 2+4 where one costs 4.
+  #
+  # It produces nothing and gates everything, which is the shape `gitleaks` and `hadolint`
+  # already use. Keeping it out of `backend` is what stops `e2e-tests` waiting 131s on a scan
+  # whose artifact had already uploaded.
+  security-scan:
+    needs: path-filter
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup Snyk
+        if: github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push'
+        uses: snyk/actions/setup@9adf32b1121593767fc3c057af55b55db032dc04 # v1
+        with:
+          # renovate: datasource=github-releases depName=snyk/cli
+          snyk-version: v1.1308.0
+
+      # `snyk code test` uploads source for static analysis and needs no toolchain at all,
+      # so both SAST runs happen before the expensive .NET setup below.
+      - name: Snyk SAST (backend)
+        if: needs.path-filter.outputs.backend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
+        run: snyk code test --all-projects
+        working-directory: backend
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Snyk SAST (frontend)
+        if: needs.path-filter.outputs.frontend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
+        run: snyk code test
+        working-directory: frontend
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      # setup-dotnet always installs the newest LTS runtime, which ships no targeting pack.
+      # Snyk reads PackageOverrides.txt from the pack matching the newest shared runtime, so
+      # that gap aborts the scan. This exists for the SCA step below and nothing else, which
+      # is why it lives here rather than in the job that builds and tests.
+      - name: Setup .NET
+        if: needs.path-filter.outputs.backend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          global-json-file: backend/global.json
+
+      - name: Align installed runtimes with installed targeting packs
+        if: needs.path-filter.outputs.backend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$(dotnet --list-sdks | tail -n 1 | sed -e 's/.*\[//' -e 's#/sdk\]$##')"
+          packs="$root/packs/Microsoft.NETCore.App.Ref"
+          if [ ! -d "$packs" ]; then
+            echo "No Microsoft.NETCore.App.Ref targeting packs under $packs" >&2
+            exit 1
+          fi
+          for runtime in "$root"/shared/Microsoft.NETCore.App/*/; do
+            version="$(basename "$runtime")"
+            if [ ! -f "$packs/$version/data/PackageOverrides.txt" ]; then
+              echo "Removing runtime $version: no targeting pack ships with the pinned SDK"
+              rm -rf "$runtime"
+            fi
+          done
+          newest="$(dotnet --list-runtimes | awk '$1 == "Microsoft.NETCore.App" { v = $2 } END { print v }')"
+          if [ ! -f "$packs/$newest/data/PackageOverrides.txt" ]; then
+            echo "Newest runtime $newest still has no targeting pack under $packs" >&2
+            exit 1
+          fi
+
+      - name: Restore dependencies
+        if: needs.path-filter.outputs.backend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
+        run: dotnet restore
+        working-directory: backend
+
+      - name: Snyk SCA (backend)
+        if: needs.path-filter.outputs.backend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
+        run: snyk test --all-projects
+        working-directory: backend
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      # From the repository root with the backend excluded, so this covers frontend/ and the
+      # root package-lock.json — the latter holds the semantic-release tree and was scanned
+      # by nothing before.
+      - name: Snyk SCA (frontend and root manifests)
+        if: needs.path-filter.outputs.frontend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
+        run: snyk test --all-projects --exclude=backend
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  # Route-mocked UI tests against the built frontend bundle only. Real browser + real
+  # frontend, but every /api call is intercepted by page.route — no backend/DB booted.
+  # Not end-to-end (the frontend in isolation); the real E2E smoke is the job below.
+  #
+  # `needs: frontend` alone, not both CI jobs: this consumes frontend-dist and nothing else.
+  # While `e2e.yml` was a called workflow both of its jobs had to share one `needs:`, which
+  # left this one idling ~5.6 min on a backend build it never reads.
+  ui-tests:
+    needs: frontend
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # The image ships the browsers and their system libraries, replacing an apt-get step that
+    # ranged from 28s to 821s and failed outright at least once. The tag MUST match the
+    # @playwright/test version resolved in frontend/package-lock.json; a mismatch fails at
+    # test start with "Executable doesn't exist". The assert step below catches drift early.
+    container: mcr.microsoft.com/playwright:v1.63.0-noble
+
+    defaults:
+      run:
+        # A `container:` job defaults its shell to `sh`, not the `bash` every runner-hosted
+        # job here gets, because an arbitrary image may ship no bash. This one does, and
+        # without this line a `set -o pipefail` dies on dash with "Illegal option" before
+        # the script's first real statement.
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Download frontend artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: frontend-dist
+          path: frontend/dist
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: frontend
+
+      - name: Assert the image matches the installed Playwright
+        working-directory: frontend
+        run: |
+          set -euo pipefail
+          installed="$(node -p "require('@playwright/test/package.json').version")"
+          if [ "$installed" != "1.63.0" ]; then
+            echo "::error::container image is v1.63.0 but node_modules resolves v$installed — bump the container tag in this file"
+            exit 1
+          fi
+
+      # Polled with node rather than curl: node is the one binary this container is
+      # guaranteed to carry, and unlike the old curl loop this exits non-zero when the
+      # server never comes up, instead of falling through to a suite of connection errors.
+      - name: Serve built frontend bundle
+        working-directory: frontend
+        run: |
+          npm run preview -- --port 4173 --host 127.0.0.1 &
+          node -e '
+            const deadline = Date.now() + 30000;
+            (async () => {
+              while (Date.now() < deadline) {
+                try {
+                  const res = await fetch("http://127.0.0.1:4173");
+                  if (res.ok) process.exit(0);
+                } catch {}
+                await new Promise((r) => setTimeout(r, 500));
+              }
+              console.error("vite preview did not answer on 127.0.0.1:4173 within 30s");
+              process.exit(1);
+            })();
+          '
+
+      - name: Run Playwright tests (UI, mocked API)
+        run: npx playwright test --project=ui
+        working-directory: frontend
+        env:
+          CI: "true"
+          CI_BASE_URL: http://127.0.0.1:4173
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: test-results-ui
+          path: |
+            frontend/test-results/
+            frontend/playwright-report/
+          retention-days: 3
+
+  # Real, unmocked smoke against the full Docker Compose stack + a WireMock SE sidecar.
+  #
+  # This job cannot move into the Playwright container image the way `ui-tests` did: it
+  # drives `docker` and `docker compose` directly, which that image carries no client for and
+  # a job container gets no socket to reach. Its tests also read two host-published ports
+  # (the frontend on 8088 and Mailpit on 8026), which a container's own network namespace
+  # would not see. It keeps installing the system libraries on the runner.
+  e2e-tests:
+    needs: [backend, frontend]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Download backend artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: backend-publish
+          path: backend-publish
+
+      - name: Download frontend artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: frontend-dist
+          path: frontend-dist
+
+      - name: Build backend CI image
+        run: docker build -f backend/Dockerfile -t ghcr.io/luanholiv/pointlurker-backend:ci backend-publish
+
+      - name: Build frontend CI image
+        run: |
+          mkdir -p frontend-build/dist
+          cp -r frontend-dist/* frontend-build/dist/
+          cp frontend/nginx.conf frontend-build/nginx.conf
+          docker build -f frontend/Dockerfile -t ghcr.io/luanholiv/pointlurker-frontend:ci frontend-build
+
+      # Nothing else in CI catches a missing USER: it is invisible to every test we run, and
+      # hadolint does not flag it either — its only user rule fires on an explicit trailing
+      # `USER root`, and its numeric-uid rule only fires on a USER that is already there.
+      # Reading the value back off the built image also covers a base-image change quietly
+      # reintroducing root, which no Dockerfile lint could see. This job carries the check
+      # because it is the one that builds the images; the two Dockerfiles sit in different
+      # path filters, so a guard behind either would miss single-stack PRs.
+      - name: Assert both images run as a non-root user
+        run: |
+          for image in \
+            ghcr.io/luanholiv/pointlurker-backend:ci \
+            ghcr.io/luanholiv/pointlurker-frontend:ci; do
+            user="$(docker image inspect -f '{{.Config.User}}' "$image")"
+            case "$user" in
+              "" | root | 0 | 0:*)
+                echo "FAIL: $image runs as root (Config.User='$user')" >&2
+                exit 1
+                ;;
+            esac
+            echo "$image runs as $user"
+          done
+
+      - name: Start Docker Compose stack (with WireMock SE sidecar)
+        env:
+          IMAGE_TAG: ci
+        run: |
+          docker compose -f docker-compose.yml -f docker-compose.e2e.yml up -d --wait --wait-timeout 120
+          docker compose -f docker-compose.yml -f docker-compose.e2e.yml ps
+
+      - name: Dump container diagnostics
+        if: failure()
+        env:
+          IMAGE_TAG: ci
+        run: |
+          set +e
+          echo "=== Docker Compose ps ==="
+          docker compose -f docker-compose.yml -f docker-compose.e2e.yml ps --all
+          echo ""
+          echo "=== Docker Compose logs ==="
+          docker compose -f docker-compose.yml -f docker-compose.e2e.yml logs
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: frontend
+
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('frontend/package-lock.json') }}
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps
+        working-directory: frontend
+
+      - name: Install Playwright system deps
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps
+        working-directory: frontend
+
+      - name: Run Playwright tests (real smoke)
+        run: npx playwright test --project=real --workers=1
+        working-directory: frontend
+        env:
+          CI: "true"
+          # The e2e stack publishes the frontend on E2E_FRONTEND_PORT (default 8088),
+          # not 80 — backend/db are reached over the compose network. Single path: CI
+          # uses the same port as local verify-local.sh.
+          CI_BASE_URL: http://localhost:8088
+          # Named explicitly rather than left to the hardcoded default in the spec, so the
+          # second host port this suite depends on is visible in the workflow.
+          E2E_MAILPIT_URL: http://localhost:8026
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: test-results-e2e-real
+          path: |
+            frontend/test-results/
+            frontend/playwright-report/
+          retention-days: 3
+
+      - name: Stop Docker Compose stack
+        if: always()
+        env:
+          IMAGE_TAG: ci
+        run: docker compose -f docker-compose.yml -f docker-compose.e2e.yml down -v
+
+  release:
+    # Every gate is an edge here, because a failing job only stops the jobs that need it —
+    # without these a red scan would fail the workflow while release and cd carried on and
+    # published images from a commit carrying a secret, built from a Dockerfile that just
+    # failed lint, or carrying a known vulnerability. No required status check is available
+    # on this repository's plan, so these edges are the whole enforcement story.
+    needs: [ui-tests, e2e-tests, gitleaks, hadolint, security-scan]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # comments and labels are off in .releaserc.json
+    outputs:
+      new_release_published: ${{ steps.semantic.outputs.new_release_published }}
+      new_release_version: ${{ steps.semantic.outputs.new_release_version }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - uses: cycjimmy/semantic-release-action@16ca923e6ccbb50770c415a0ccd43709a8c5f7a4 # v4
+        id: semantic
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  cd:
+    needs: [release]
+    if: needs.release.outputs.new_release_published == 'true'
+    uses: ./.github/workflows/cd.yml
+    permissions:
+      contents: write
+      id-token: write
+      packages: write
+    with:
+      version: ${{ needs.release.outputs.new_release_version }}
+    secrets:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

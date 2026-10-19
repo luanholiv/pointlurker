@@ -1,0 +1,80 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "schedule:weekly", "helpers:pinGitHubActionDigests"],
+  "enabledManagers": ["nuget", "npm", "github-actions", "custom.regex", "dockerfile", "docker-compose"],
+  "minimumReleaseAge": "7 days",
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "description": "A bump that closes an advisory has to reach the published images, and only a releasable commit does — the default chore(deps) is invisible to the commit analyzer. Renovate's own defaults for this object already break these PRs out of the manager groups and past the weekly schedule and minimum release age, so the commit type is the only thing left to set. Detection comes from OSV, since GitHub's alert feed is off for this repository. Note this does not reach GitHub Actions: OSV has no actions datasource, so an action advisory rides the ordinary weekly group.",
+    "semanticCommitType": "fix",
+    "labels": ["security"]
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "The Snyk setup action interpolates its snyk-version input straight into a download URL, and that input defaults to latest — so a pinned action ref still guards a wrapper around whatever binary is current at run time. Pinning the input closes that second hop and makes the scan reproducible; this manager is what keeps the pin from rotting. The leading v is part of the URL path and a version without it is refused, which is why the datasource is github-releases (tags carry the v) rather than npm (versions do not). The GITLEAKS_VERSION pin is the same shape for the same reason: the secret-scan job builds its download URL from that value, so an unpinned version would silently scan with whatever binary is current. It keeps the leading v too, because the release path carries it while the asset filename does not. Each key is matched literally rather than generalised, so adding a third pin means adding a third entry here.",
+      "managerFilePatterns": ["/^\\.github/workflows/.+\\.ya?ml$/"],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)\\s+snyk-version:\\s*(?<currentValue>\\S+)",
+        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)\\s+GITLEAKS_VERSION:\\s*(?<currentValue>\\S+)"
+      ]
+    }
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["nuget"],
+      "groupName": "nuget dependencies"
+    },
+    {
+      "matchManagers": ["npm"],
+      "groupName": "npm dependencies"
+    },
+    {
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<7",
+      "description": "typescript-eslint 8 peers typescript >=4.8.4 <6.1.0 and there is no v9 on npm yet, so a TypeScript 7 bump takes eslint down with it. Lift this once typescript-eslint declares TypeScript 7 support."
+    },
+    {
+      "description": "FluentAssertions 8+ replaced Apache-2.0 with the Xceed Community License, which permits non-commercial use only. Stay on the last Apache-2.0 release.",
+      "matchManagers": ["nuget"],
+      "matchPackageNames": ["FluentAssertions"],
+      "allowedVersions": "<8.0.0"
+    },
+    {
+      "description": "Microsoft.AspNetCore.OpenApi for .NET 10 requires Microsoft.OpenApi [2.7.5, 3.0.0). CentralPackageTransitivePinningEnabled forces this version onto it, so it must stay on the 2.x line.",
+      "matchManagers": ["nuget"],
+      "matchPackageNames": ["Microsoft.OpenApi"],
+      "allowedVersions": "<3.0.0"
+    },
+    {
+      "description": "Action refs and the Snyk CLI pin travel as one PR. Nothing here is automerged, so the cost of watching these is measured in PRs somebody has to read; grouping holds that at one a week instead of one per action.",
+      "matchManagers": ["github-actions", "custom.regex"],
+      "groupName": "github actions"
+    },
+    {
+      "description": "Every action here was at least one major behind when the manager was first enabled, several by three or four, so turning it on cold would queue a wall of breaking-change PRs — the opposite of the point. Majors wait on the dependency dashboard until someone takes them deliberately; digests, minors and patches flow on the weekly group.",
+      "matchManagers": ["github-actions", "custom.regex"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Six images across two Dockerfiles and two compose files travel as one PR, like the other groups here. pinDigests is off and set explicitly so it is not rediscovered: both runtime bases install from the live Alpine index, so a digest on FROM buys no reproducibility those lines have not already spent, and the SBOM is built from the published manifest digest anyway. Scoped to the docker managers so the action digest pins are untouched.",
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "groupName": "docker images",
+      "pinDigests": false
+    },
+    {
+      "description": "A base major moves the Alpine release that both Dockerfiles' apk prefix pins resolve against, so it is never only a version number. Same shape as the github actions rule above: majors wait on the dependency dashboard, everything else flows on the weekly group.",
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "The alpine tag already floats across every patch rebuild, so the only update left to offer is the destructive major — and nothing here would catch it, because every stack in CI boots on a fresh volume. The compose file ships as a release asset whose documented update pulls straight onto a live data volume, and that upgrade carries custom extensions, a text search configuration and an index over it for which the deployment guide has no procedure. Disabled rather than dashboard-gated, because the PR would go green; an allowedVersions cap is not an option, since docker versioning has no ranges and would silently filter nothing. Matched by datasource because an npm package shares the name.",
+      "matchDatasources": ["docker"],
+      "matchDepNames": ["postgres"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    }
+  ]
+}

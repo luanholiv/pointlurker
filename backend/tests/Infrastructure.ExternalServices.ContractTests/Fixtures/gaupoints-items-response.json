@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "id": "netflix",
+      "name": "Gift Card Netflix",
+      "description": "Gift card Netflix no valor de R$ 35,00 (trinta e cinco reais)",
+      "cost": 8000,
+      "type": "digital",
+      "stock": 9,
+      "image": "https://cdn.streamelements.com/uploads/bf1099a1-1ed3-4a88-8aec-eb5b3bd3a03b.png"
+    },
+    {
+      "id": "boneg3x",
+      "name": "Boné G3X",
+      "description": "Boné lendário do time do povo!!",
+      "cost": 20000,
+      "type": "physical",
+      "stock": 0,
+      "image": "https://cdn.streamelements.com/uploads/01k86bpb9jvxd0ty5sf0rd2nys.png"
+    }
+  ]
+}

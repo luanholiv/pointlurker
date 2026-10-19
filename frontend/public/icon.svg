@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#26262a"/>
+      <stop offset="1" stop-color="#1b1b1e"/>
+    </linearGradient>
+    <linearGradient id="coin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdc24a"/>
+      <stop offset="0.45" stop-color="#f4a63a"/>
+      <stop offset="0.6" stop-color="#e98f2e"/>
+      <stop offset="1" stop-color="#d4742a"/>
+    </linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbc955"/>
+      <stop offset="0.45" stop-color="#f6ad3e"/>
+      <stop offset="0.6" stop-color="#ee962f"/>
+      <stop offset="1" stop-color="#df7f2a"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a3a3e"/>
+      <stop offset="0.25" stop-color="#2b2b2e"/>
+      <stop offset="1" stop-color="#1f1f22"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c99063"/>
+      <stop offset="0.3" stop-color="#e3b17e"/>
+      <stop offset="1" stop-color="#e8b884"/>
+    </linearGradient>
+    <radialGradient id="iris" cx="0.62" cy="0.78" r="0.8">
+      <stop offset="0" stop-color="#f6ad45"/>
+      <stop offset="0.45" stop-color="#b8702a"/>
+      <stop offset="1" stop-color="#4e2c12"/>
+    </radialGradient>
+    <clipPath id="tileClip">
+      <rect x="20" y="20" width="984" height="984" rx="200"/>
+    </clipPath>
+    <clipPath id="coinClip">
+      <ellipse cx="512" cy="494" rx="397" ry="415"/>
+    </clipPath>
+    <clipPath id="eyeL">
+      <path d="M 294 446 C 350 436, 410 448, 456 478 C 444 520, 412 538, 376 538 C 326 538, 298 504, 294 446 Z"/>
+    </clipPath>
+    <clipPath id="eyeR">
+      <path d="M 728 446 C 672 436, 612 448, 566 478 C 578 520, 610 538, 646 538 C 696 538, 724 504, 728 446 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect x="20" y="20" width="984" height="984" rx="200" fill="url(#tile)"/>
+
+  <ellipse cx="512" cy="494" rx="397" ry="415" fill="url(#coin)"/>
+  <g clip-path="url(#coinClip)">
+    <path d="M 560 60 L 760 60 L 440 940 L 240 940 Z" fill="#fff3c4" opacity="0.14"/>
+  </g>
+  <ellipse cx="512" cy="494" rx="340" ry="357" fill="url(#face)" stroke="#c96f27" stroke-width="12"/>
+  <ellipse cx="512" cy="500" rx="322" ry="338" fill="none" stroke="#ffd57a" stroke-width="5" opacity="0.45"/>
+
+  <path clip-path="url(#tileClip)" d="M -200 372
+           C 80 378, 220 340, 310 334
+           C 400 330, 450 362, 512 362
+           C 574 362, 624 330, 714 334
+           C 804 340, 944 378, 1224 372
+           L 1224 572
+           C 944 566, 860 598, 790 616
+           C 690 640, 600 640, 512 640
+           C 424 640, 334 640, 234 616
+           C 164 598, 80 566, -200 572 Z" fill="url(#band)"/>
+
+  <path d="M 512 400
+           C 560 400, 600 372, 680 372
+           C 760 372, 790 420, 790 472
+           C 790 530, 750 574, 680 574
+           C 600 574, 560 532, 512 532
+           C 464 532, 424 574, 344 574
+           C 274 574, 226 530, 226 472
+           C 226 420, 256 372, 344 372
+           C 424 372, 464 400, 512 400 Z" fill="url(#skin)"/>
+
+  <path d="M 294 446 C 350 436, 410 448, 456 478 C 444 520, 412 538, 376 538 C 326 538, 298 504, 294 446 Z" fill="#fde9b3"/>
+  <circle cx="410" cy="478" r="40" fill="url(#iris)" clip-path="url(#eyeL)"/>
+  <path d="M 728 446 C 672 436, 612 448, 566 478 C 578 520, 610 538, 646 538 C 696 538, 724 504, 728 446 Z" fill="#fde9b3"/>
+  <circle cx="682" cy="468" r="41" fill="url(#iris)" clip-path="url(#eyeR)"/>
+
+  <path d="M 276 434 C 312 414, 384 414, 434 444 C 448 452, 458 464, 458 474 C 458 484, 448 486, 440 480 C 404 454, 344 438, 292 446 C 278 448, 270 440, 276 434 Z" fill="#432e1e"/>
+  <path d="M 746 434 C 710 414, 638 414, 588 444 C 574 452, 564 464, 564 474 C 564 484, 574 486, 582 480 C 618 454, 678 438, 730 446 C 744 448, 752 440, 746 434 Z" fill="#432e1e"/>
+</svg>

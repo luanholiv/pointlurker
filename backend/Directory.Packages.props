@@ -1,0 +1,111 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- ASP.NET Core -->
+    <PackageVersion Include="Cronos" Version="0.13.0" />
+    <PackageVersion Include="CsCheck" Version="4.8.0" />
+    <PackageVersion Include="FluentValidation" Version="12.1.1" />
+    <PackageVersion Include="FuzzySharp" Version="2.0.2" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.11" />
+    <PackageVersion Include="Microsoft.AspNetCore.DataProtection" Version="10.0.11" />
+    <PackageVersion Include="Microsoft.AspNetCore.DataProtection.Extensions" Version="10.0.11" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity" Version="2.3.12" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.11" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.11" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.11" />
+    <PackageVersion Include="Microsoft.AspNetCore.SpaProxy" Version="10.0.11" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.11" />
+    <PackageVersion Include="Microsoft.Extensions.Localization" Version="10.0.11" />
+    <PackageVersion Include="MailKit" Version="4.18.1" />
+    <!-- Entity Framework Core -->
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.11" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.11" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
+    <!--
+      Security overrides (transitive version pins).
+
+      Nothing below is referenced directly. CentralPackageTransitivePinningEnabled turns each entry
+      into a floor forced onto whatever pulls the package in transitively, and NuGetAuditMode is
+      `direct` (Directory.Build.props), so none of these versions is audited at restore time — Snyk
+      SCA in CI is what flags them, and a pin is how a finding gets cleared without waiting on the
+      dependency's own floor to move.
+
+      So every pin here names the advisory or resolver constraint behind it, the transitive floor it
+      is raising today, and what has to be true before it can go. Without that, a bump against one
+      of these packages cannot be told apart from a pin that has already become churn: Renovate
+      raises them either way, and a floor that has caught up on its own leaves the pin doing nothing
+      while still looking load-bearing.
+    -->
+    <!--
+      Microsoft.AspNetCore.OpenApi for .NET 10 first declared an open lower bound on this package
+      (`[2.0.0, )`), so NuGet resolved 2.0.0 along with its high-severity uncontrolled recursion.
+      Bumping AspNetCore.OpenApi did not help — its newer releases repeated the same range — so only
+      a pin moved it. Its 10.0.11 release narrowed the range to `[2.7.5, 3.0.0)`, which makes the
+      fixed release the transitive floor; the pin now only holds the 2.x line at its newest patch.
+      It must stay under 3.0.0, because the resolver forces this version onto AspNetCore.OpenApi and
+      that package rejects the 3.x line — a renovate.json rule holds the same ceiling.
+
+      Droppable once Snyk reports nothing against the version AspNetCore.OpenApi's own floor
+      resolves (2.7.5 today): from there the pin buys freshness, not safety.
+    -->
+    <PackageVersion Include="Microsoft.OpenApi" Version="2.12.2" />
+    <!--
+      Test-only: the response-template engine of WireMock.Net.Minimal, which the StreamElements
+      contract tests are the only consumer of, so it reaches no shipped artifact. That package's
+      2.15.0 release depends on exactly 7.2.5 and this pin raises it to the newest 7.2.x patch. No
+      advisory stands against 7.2.5 today, so read it as a floor kept a patch ahead of an
+      exact-version dependency rather than as a live fix.
+
+      Droppable once Snyk is clean on the version WireMock resolves by itself — or immediately, if
+      WireMock.Net.Minimal ever leaves the contract tests, since nothing else pulls Scriban.
+    -->
+    <PackageVersion Include="Scriban.Signed" Version="7.4.0" />
+    <!--
+      Reachable in production, unlike the two above: it signs the Data Protection key ring that
+      encrypts the stored provider credentials. Pinned first at 10.0.6 to clear a high-severity XXE
+      and an infinite loop reached through Microsoft.AspNetCore.Identity, then raised to 10.0.10 for
+      a critical improper signature verification and a high-severity unbounded allocation.
+      Microsoft.AspNetCore.DataProtection 10.0.11 depends on exactly 10.0.11; this pin raises it.
+
+      Droppable while DataProtection keeps depending on an exact patch at or above the fixed
+      release. A range that loosens, or a DataProtection version pointing below it, is what puts
+      the floor back on this pin — which is why it is kept rather than dropped on one release.
+    -->
+    <PackageVersion Include="System.Security.Cryptography.Xml" Version="10.0.13" />
+    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
+    <!-- HTTP Clients -->
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.9.0" />
+    <PackageVersion Include="Refit" Version="15.2.0" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="15.2.0" />
+    <!-- Testing -->
+    <PackageVersion Include="JunitXml.TestLogger" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="FluentAssertions" Version="7.2.2" />
+    <PackageVersion Include="Microsoft.Extensions.TimeProvider.Testing" Version="10.9.0" />
+    <PackageVersion Include="NetArchTest.Rules" Version="1.3.2" />
+    <PackageVersion Include="WireMock.Net.Minimal" Version="2.15.0" />
+    <PackageVersion Include="NSubstitute" Version="6.2.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.9.0" />
+    <PackageVersion Include="Respawn" Version="7.0.0" />
+    <PackageVersion Include="Testcontainers" Version="4.15.0" />
+    <PackageVersion Include="Testcontainers.PostgreSql" Version="4.15.0" />
+    <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="4.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="coverlet.collector" Version="10.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+  </ItemGroup>
+</Project>

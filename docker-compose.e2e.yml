@@ -1,0 +1,54 @@
+services:
+  wiremock:
+    image: wiremock/wiremock:3.13.2
+    hostname: wiremock
+    restart: unless-stopped
+    command: ["--port", "8080", "--disable-banner", "--local-response-templating"]
+    volumes:
+      - ./frontend/tests/e2e/wiremock:/home/wiremock
+      - ./backend/tests/Infrastructure.ExternalServices.ContractTests/Fixtures/store-items-response.json:/home/wiremock/__files/store-items-response.json:ro
+    networks:
+      - pointlurker-network
+
+  dataprotection-init:
+    container_name: !reset null
+
+  database:
+    container_name: !reset null
+
+  backend:
+    container_name: !reset null
+    environment:
+      - STREAMELEMENTS__BASEURL=http://wiremock:8080
+      - SYNC__FETCHCRONEXPRESSION=* * * * *
+      - SMTP__HOST=mailpit
+      - SMTP__PORT=1025
+      - SMTP__SECURITY=None
+      - SMTP__USERNAME=e2e
+      - SMTP__PASSWORD=e2e
+      - SMTP__FROM=monitor@e2e.local
+    depends_on:
+      wiremock:
+        condition: service_started
+      mailpit:
+        condition: service_started
+
+  mailpit:
+    image: axllent/mailpit:v1.31.5
+    hostname: mailpit
+    restart: unless-stopped
+    environment:
+      - MP_SMTP_AUTH_ACCEPT_ANY=1
+      - MP_SMTP_AUTH_ALLOW_INSECURE=1
+    ports:
+      - "${E2E_MAILPIT_PORT:-8026}:8025"
+    networks:
+      - pointlurker-network
+
+  frontend:
+    container_name: !reset null
+    ports:
+      - "${E2E_FRONTEND_PORT:-8088}:8080"
+
+  proxy:
+    profiles: ["disabled"]
