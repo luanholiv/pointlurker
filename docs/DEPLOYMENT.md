@@ -28,6 +28,8 @@ cosign verify \
 
 Replace `v1.2.3` with your version and swap the image name for the frontend. For the SBOM, use `verify-attestation --type spdxjson` or download it from the GitHub Release.
 
+Images up to and including `v11.1.0` were built before the project moved to this repository and carry the predecessor's identity, `https://github.com/luanholiv/streamelements-store-monitor/.github/workflows/cd.yml@refs/heads/main`; pass that as `--certificate-identity` to verify them.
+
 - **Only signed digests are tagged.** `v{version}` and `latest` are published after the container scan (`snyk container test --severity-threshold=high`) passes and the digest is signed. The backend's `v{version}-amd64`/`-arm64` tags are unsigned build intermediates; verify `v{version}` or `latest`.
 - **A draft GitHub Release means CD did not finish.** semantic-release creates it as a draft, and CD publishes it in its last step.
 - **Builds are not bit-reproducible.** Images install packages from the live Alpine index, so a later rebuild of the same commit can differ; the signature and SBOM describe the published digest.
