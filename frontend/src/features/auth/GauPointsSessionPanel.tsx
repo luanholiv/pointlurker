@@ -10,8 +10,11 @@ import { formatDate } from "../../i18n/formatters";
 import { providerLabelKey } from "../stores/storeProviders";
 import { useAuth } from "./AuthContext";
 
-const SESSION_LABELS: FieldLabelMap = { secret: "settings.gauPoints.label" };
-const SESSION_ANCHORS = anchorFields("secret");
+const CREDENTIAL_FIELD = "secret";
+const SESSION_LABELS: FieldLabelMap = {
+  [CREDENTIAL_FIELD]: "settings.gauPoints.label",
+};
+const SESSION_ANCHORS = anchorFields(CREDENTIAL_FIELD);
 const SESSION_ERROR_ID = "gaupoints-session-error";
 
 /**

@@ -23,11 +23,15 @@ import type { FieldLabelMap } from "../../i18n/fieldLabels";
  * The labels are the ones the inputs already carry, which is what keeps a message that cannot be
  * attached — a field this form does not render — readable at form level.
  */
-const TOKEN_LABELS: FieldLabelMap = { secret: "settings.jwtTokenLabel" };
-const TOKEN_ANCHORS = anchorFields("secret");
+const CREDENTIAL_FIELD = "secret";
+const CREDENTIAL_LABELS: FieldLabelMap = {
+  [CREDENTIAL_FIELD]: "settings.jwtTokenLabel",
+};
+const CREDENTIAL_ANCHORS = anchorFields(CREDENTIAL_FIELD);
 
-const PASSWORD_LABELS: FieldLabelMap = { password: "settings.newPassword" };
-const PASSWORD_ANCHORS = anchorFields("password");
+const NEW_PW_FIELD = "password";
+const NEW_PW_LABELS: FieldLabelMap = { [NEW_PW_FIELD]: "settings.newPassword" };
+const NEW_PW_ANCHORS = anchorFields(NEW_PW_FIELD);
 
 const LOCALE_LABELS: FieldLabelMap = { locale: "settings.language" };
 const LOCALE_ANCHORS = anchorFields("locale");
@@ -120,8 +124,8 @@ const SettingsPage = () => {
   const twoFactorEnabled = user?.twoFactorEnabled ?? false;
 
   const tokenErrorOptions = {
-    anchor: TOKEN_ANCHORS,
-    map: TOKEN_LABELS,
+    anchor: CREDENTIAL_ANCHORS,
+    map: CREDENTIAL_LABELS,
     t,
   };
 
@@ -177,8 +181,8 @@ const SettingsPage = () => {
       setPasswordStatus("error");
       if (
         !passwordFieldErrors.setFromError(error, {
-          anchor: PASSWORD_ANCHORS,
-          map: PASSWORD_LABELS,
+          anchor: NEW_PW_ANCHORS,
+          map: NEW_PW_LABELS,
           t,
         })
       ) {
