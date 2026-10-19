@@ -114,9 +114,8 @@ export default defineConfig([
     },
   },
   {
-    // AGENTS.md: "Frontend never hardcodes user-facing strings." Everything rendered to the
-    // user comes from src/i18n/locales/. That was stated for a long time but not enforced,
-    // so five components drifted back to English literals — see docs/I18N.md.
+    // Frontend never hardcodes user-facing strings: everything rendered to the user comes from
+    // src/i18n/locales/ — see docs/I18N.md.
     files: [
       "src/features/**/*.tsx",
       "src/routes/**/*.tsx",

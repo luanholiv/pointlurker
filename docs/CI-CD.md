@@ -1,8 +1,7 @@
 # CI/CD
 
-Why the pipeline is shaped the way it is. The rules are summarised in `AGENTS.md`;
-this is the reasoning behind each one, needed only when editing
-`.github/workflows/**`.
+Why the pipeline is shaped the way it is: the reasoning behind each rule, needed only when
+editing `.github/workflows/**`.
 
 What the published images are and how to verify them: [DEPLOYMENT.md](DEPLOYMENT.md).
 Running the same checks locally: [BUILD-AND-TEST.md](BUILD-AND-TEST.md).
