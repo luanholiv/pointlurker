@@ -1,8 +1,7 @@
 # CI/CD
 
-Why the pipeline is shaped the way it is. The rules are summarised in `CLAUDE.md`;
-this is the reasoning behind each one, needed only when editing
-`.github/workflows/**`.
+Why the pipeline is shaped the way it is: the reasoning behind each rule, needed only when
+editing `.github/workflows/**`.
 
 What the published images are and how to verify them: [DEPLOYMENT.md](DEPLOYMENT.md).
 Running the same checks locally: [BUILD-AND-TEST.md](BUILD-AND-TEST.md).
@@ -168,10 +167,10 @@ It runs the `git` subcommand (not the deprecated `detect`) over full history wit
 is not used: it resolves its binary to latest unless pinned, needs a `GITHUB_TOKEN`,
 and defaults PR commenting on, which wants `pull-requests: write`.
 
-**The `.gitleaks.toml` allowlist is scoped to commit SHAs and must never be widened
-to a path or a literal.** It covers one benign JWT-shaped fixture already in two
-commits on `main`. A commit allowlist only matches history, so reintroducing the
-string still fails; a path or regex exemption would permit it forever. No
+**`.gitleaks.toml` carries no allowlist, and an exemption is only ever scoped to commit
+SHAs — never to a path or a literal.** If a benign secret-shaped string reaches history,
+allowlist the commits that carry it. A commit allowlist only matches history, so
+reintroducing the string still fails; a path or regex exemption would permit it forever. No
 `.gitleaksignore` and no `--baseline-path` either: both suppress by opaque
 fingerprint and absorb new findings whenever regenerated.
 

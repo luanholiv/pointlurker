@@ -1,4 +1,4 @@
-# CLAUDE.md
+# AGENTS.md
 
 PointLurker — watches StreamElements and GauPoints loyalty stores, notifies on new items, auto-redeems wishlisted items. Backend: C# 14 / .NET 10 / ASP.NET Core. Frontend: React 19 / Vite / TypeScript / Tailwind v4. Database: PostgreSQL 17+.
 
@@ -127,7 +127,7 @@ See `docs/I18N.md` for locale mechanics, catalog layout, formatters, and how to 
 - **Three workflow files, by entry point:** `ci.yml` (push/PR to `main`), `cd.yml` (called by `ci.yml` + own `workflow_dispatch`), `store-api-live-probe.yml` (weekly cron, one step per provider). Nothing else is a reusable workflow. **`cd.yml` must never be renamed** — cosign bakes its path into the certificate identity that `docs/DEPLOYMENT.md` publishes.
 - **CD is three jobs: `build` → `security-scan` → `publish`.** Only `publish` holds `id-token: write`. A skipped `build` must not skip `security-scan`. The middle job id is `security-scan`, not `scan`.
 - **Snyk runs only in `security-scan`, never inside the jobs it gates**, one job for both stacks. Every `if:` inside it is step level, never job level.
-- **`gitleaks` and `hadolint` are always-on top-level jobs in `ci.yml`, and `release` needs both.** No `if:`, no path filter. Those `needs:` edges are the whole enforcement — this plan has no required status checks. No `.hadolint.yaml`, no `# hadolint ignore`, no `.gitleaksignore`; fix findings at the source. `.gitleaks.toml`'s allowlist is commit-SHA-scoped and must never be widened to a path or a literal.
+- **`gitleaks` and `hadolint` are always-on top-level jobs in `ci.yml`, and `release` needs both.** No `if:`, no path filter. Those `needs:` edges are the whole enforcement — this plan has no required status checks. No `.hadolint.yaml`, no `# hadolint ignore`, no `.gitleaksignore`; fix findings at the source. `.gitleaks.toml` carries no allowlist; if a benign secret-shaped string ever reaches history, its exemption is scoped to those commit SHAs, never to a path or a literal.
 - **`ui-tests` runs in `mcr.microsoft.com/playwright:v<version>-noble`; the tag must match `@playwright/test` in `frontend/package-lock.json`** (pinned exactly, guard step asserts it). `e2e-tests` cannot use that image — it needs a docker client and two host-published ports.
 - **Every third-party action is pinned by commit SHA with the tag as a trailing comment** (`uses: actions/checkout@11d5960a… # v4`); a branch ref is never acceptable. The Snyk step also pins `snyk-version`, leading `v` included.
 - **Every workflow declares its `GITHUB_TOKEN` scopes** — a `permissions:` block is a whitelist, so name every scope a job needs. Only `path-filter` (`pull-requests: read`) and `cd` (`packages: write` for GHCR, `id-token: write`) add a scope other than `contents`. A callee cannot ask for more than its caller granted, so `ci.yml`'s `cd` job must keep granting exactly what `cd.yml`'s `publish` declares.
