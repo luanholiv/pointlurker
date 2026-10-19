@@ -114,7 +114,7 @@ export default defineConfig([
     },
   },
   {
-    // CLAUDE.md: "Frontend never hardcodes user-facing strings." Everything rendered to the
+    // AGENTS.md: "Frontend never hardcodes user-facing strings." Everything rendered to the
     // user comes from src/i18n/locales/. That was stated for a long time but not enforced,
     // so five components drifted back to English literals — see docs/I18N.md.
     files: [

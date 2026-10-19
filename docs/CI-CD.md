@@ -1,6 +1,6 @@
 # CI/CD
 
-Why the pipeline is shaped the way it is. The rules are summarised in `CLAUDE.md`;
+Why the pipeline is shaped the way it is. The rules are summarised in `AGENTS.md`;
 this is the reasoning behind each one, needed only when editing
 `.github/workflows/**`.
 

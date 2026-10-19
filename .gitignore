@@ -485,6 +485,7 @@ $RECYCLE.BIN/
 
 .opencode/
 .claude
+/CLAUDE.md
 **/TODO.md
 
 # Real-E2E WireMock store-items body is bind-mounted at runtime from the

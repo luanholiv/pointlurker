@@ -1,4 +1,4 @@
-# CLAUDE.md
+# AGENTS.md
 
 PointLurker — watches StreamElements and GauPoints loyalty stores, notifies on new items, auto-redeems wishlisted items. Backend: C# 14 / .NET 10 / ASP.NET Core. Frontend: React 19 / Vite / TypeScript / Tailwind v4. Database: PostgreSQL 17+.
 
