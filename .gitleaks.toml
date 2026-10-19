@@ -3,21 +3,3 @@
 
 [extend]
 useDefault = true
-
-[[allowlists]]
-description = """
-Two commits already on main carry the JWT-shaped fixture "eyJhbGciOiJIUzI1NiJ9.test" in
-backend/tests/IntegrationTests/Auth/SeTokenEndpointTests.cs. It is not a credential — it was
-never signed and no service ever accepted it — but its entropy trips generic-api-key. The
-fixture itself is fixed in the working tree; those two patches cannot be, short of rewriting
-the trunk.
-
-Scoped to the commit SHAs rather than to the file or the literal on purpose: a commit
-allowlist can only ever match history, so re-introducing the string in a new commit still
-fails the scan. A path or regex exemption would silently permit that regression forever.
-"""
-targetRules = ["generic-api-key"]
-commits = [
-  "cd0ff570ca5b89cf3dbff8dfecee87bc9c227c27",
-  "f1c6a648fe47dfa1803fb994967c90a41683ee9a",
-]
