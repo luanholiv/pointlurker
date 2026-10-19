@@ -1,4 +1,4 @@
-const TOKEN_KEY = "pl.auth.token";
+const AUTH_STORAGE_SLOT = "pl.auth.token";
 
 /**
  * Persisted token set. The access token is an opaque ASP.NET Data Protection
@@ -33,7 +33,7 @@ const isStoredTokenSet = (value: unknown): value is StoredTokenSet => {
 
 /** Reads and parses the full persisted token set, or `null` when absent/corrupt. */
 export const getTokenSet = (): StoredTokenSet | null => {
-  const raw = localStorage.getItem(TOKEN_KEY);
+  const raw = localStorage.getItem(AUTH_STORAGE_SLOT);
   if (!raw) {
     return null;
   }
@@ -59,13 +59,13 @@ export const setTokenSet = ({
     refreshToken,
     expiresAt: Date.now() + expiresIn * 1000,
   };
-  localStorage.setItem(TOKEN_KEY, JSON.stringify(tokenSet));
+  localStorage.setItem(AUTH_STORAGE_SLOT, JSON.stringify(tokenSet));
   return tokenSet;
 };
 
 /** Clears all three values (used on logout and refresh failure). */
 export const clearTokenSet = () => {
-  localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(AUTH_STORAGE_SLOT);
 };
 
 /** Convenience reader for the current bearer access token, or `null`. */
@@ -84,7 +84,7 @@ export const setAccessToken = (token: string) => {
     refreshToken: existing?.refreshToken ?? "",
     expiresAt: existing?.expiresAt ?? Date.now() + 3_600_000,
   };
-  localStorage.setItem(TOKEN_KEY, JSON.stringify(tokenSet));
+  localStorage.setItem(AUTH_STORAGE_SLOT, JSON.stringify(tokenSet));
 };
 
 /** Backward-compatible clear (removes all three values). */
