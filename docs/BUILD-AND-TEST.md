@@ -116,7 +116,7 @@ npm run format:check
 
 Prettier is a frontend-only tool. Backend C# belongs to CSharpier; `docs/`, `openspec/`, `.github/` and the root manifests have never been Prettier-formatted and must stay that way even when Prettier is run from the repo root. The root `.prettierignore` therefore denies everything and re-includes `frontend/`.
 
-Two ignore files exist because Prettier resolves them relative to its cwd: lint-staged reads the root `.prettierignore`, `npm run format:check` runs from `frontend/` and reads `frontend/.prettierignore` (the root `.gitignore` does not reach there). **Keep their exclusions in sync** — if they disagree, staging a file reformats it behind the gate. Both exclude generated output (`coverage/`, `test-results/`, `playwright-report/`, `dist/`) and `.claude/`, which holds vendored third-party skills (MIT, by Vercel) kept byte-identical to upstream so a re-sync is not a formatting diff.
+Two ignore files exist because Prettier resolves them relative to its cwd: lint-staged reads the root `.prettierignore`, `npm run format:check` runs from `frontend/` and reads `frontend/.prettierignore` (the root `.gitignore` does not reach there). **Keep their exclusions in sync** — if they disagree, staging a file reformats it behind the gate. Both exclude generated output (`coverage/`, `test-results/`, `playwright-report/`, `dist/`).
 
 ### Unit tests
 
