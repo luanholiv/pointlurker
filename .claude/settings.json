@@ -39,6 +39,7 @@
       "Bash(rtk *)",
       "Bash(snyk test:*)",
       "Bash(xargs grep *)",
+      "Bash(bash scripts/verify-local.sh)",
       "mcp__chrome-devtools__*",
       "mcp__playwright__*",
       "mcp__plugin_playwright_playwright__*",
@@ -64,6 +65,9 @@
       "Bash(pnpm *)",
       "Bash(rm *)",
       "Bash(yarn *)"
+    ],
+    "deny": [
+      "Bash(python3)"
     ]
   }
 }
