@@ -153,7 +153,6 @@ const AddStoreDialog = ({
     <Modal
       open={open}
       onClose={handleClose}
-      eyebrow={t("stores.addDialog.eyebrow")}
       title={
         <>
           {t("common.add")}{" "}

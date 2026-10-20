@@ -46,8 +46,7 @@ Colour is independent of role and composes with it: `.t-muted` (ink-3), `.t-dim`
    password", not "Credentials". If a panel needs two levels of title, it is two panels.
 3. **No label above a heading.** A Label (`t-eyebrow`) above a Heading competes with it and, being
    smaller, inverts the hierarchy when it carries the more specific word. A kicker is allowed only
-   on the page head and the modal head, where it gives context ("Authenticator") to a title that
-   already names the subject.
+   on the page head, where it gives context to a title that already names the subject.
 4. **A label never repeats its heading.** Under "StreamElements" the field is "JWT Token", not
    "StreamElements JWT Token".
 5. **Step down one role at a time inside a container.** Heading → Body/Small → Meta/Label. A card

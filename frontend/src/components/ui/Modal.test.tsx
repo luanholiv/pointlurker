@@ -33,19 +33,17 @@ describe("Modal", () => {
     expect(onClose).toHaveBeenCalled();
   });
 
-  it("renders eyebrow and description when provided", () => {
+  it("renders description when provided", () => {
     render(
       <Modal
         open={true}
         onClose={vi.fn()}
         title="Title"
-        eyebrow="01 · ADD STORE"
         description="Some description"
       >
         <div className="modal-body" />
       </Modal>,
     );
-    expect(screen.getByText("01 · ADD STORE")).toBeInTheDocument();
     expect(screen.getByText("Some description")).toBeInTheDocument();
   });
 

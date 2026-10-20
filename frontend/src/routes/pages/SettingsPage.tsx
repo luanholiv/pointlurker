@@ -688,7 +688,6 @@ const SettingsPage = () => {
             <Modal
               open={disableConfirmOpen}
               onClose={() => setDisableConfirmOpen(false)}
-              eyebrow={t("settings.authenticator")}
               title={t("settings.disable2FAConfirmTitle")}
               description={t("settings.disable2FAConfirmBody")}
             >

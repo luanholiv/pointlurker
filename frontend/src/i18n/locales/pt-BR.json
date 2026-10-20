@@ -100,7 +100,6 @@
     "syncLabel": "SINC",
     "foundPill": "encontrado",
     "addDialog": {
-      "eyebrow": "01 · ADICIONAR LOJA",
       "titleEm": "loja",
       "usernamePlaceholder": "ex.: xqc",
       "description": "Digite o nome de usuário do canal no StreamElements. Vamos verificar e buscar a lista de itens atual.",
@@ -134,7 +133,6 @@
       "removeError": "Falha ao remover loja"
     },
     "missingLabels": {
-      "eyebrow": "01 · LOJA CRIADA",
       "title": "Preencher",
       "titleEm": "perfil da loja",
       "description_one": "{{storeName}} tem {{count}} rótulo de entrada sem valor armazenado. O auto-resgate bloqueará itens que exigem este rótulo até que seja preenchido.",
@@ -280,7 +278,6 @@
     "loadError": "Falha ao carregar lista de desejos.",
     "synced": "Sincronizado em {{date}}",
     "modal": {
-      "addEyebrow": "02 · LISTA DE DESEJOS",
       "editTitle": "Editar",
       "editTitleEm": "item",
       "addTitle": "Adicionar à",
@@ -383,7 +380,6 @@
     "passwordSaved": "Senha atualizada.",
     "updatePassword": "Atualizar senha",
     "savingPassword": "Salvando…",
-    "authenticator": "Autenticador",
     "twoFactorHeading": "Autenticação de dois fatores",
     "twoFactorEnabled": "Dois fatores está ativado.",
     "disable2FA": "Desativar",
