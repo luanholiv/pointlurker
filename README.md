@@ -5,7 +5,7 @@
 [![Release](https://img.shields.io/github/v/release/luanholiv/pointlurker?sort=semver&logo=github)](https://github.com/luanholiv/pointlurker/releases/latest)
 [![Backend image](https://img.shields.io/badge/GHCR-backend-2496ED?logo=docker&logoColor=white)](https://github.com/luanholiv/pointlurker/pkgs/container/pointlurker-backend)
 [![Frontend image](https://img.shields.io/badge/GHCR-frontend-2496ED?logo=docker&logoColor=white)](https://github.com/luanholiv/pointlurker/pkgs/container/pointlurker-frontend)
-[![License](https://img.shields.io/github/license/luanholiv/pointlurker)](LICENSE)
+![License](https://img.shields.io/badge/license-Unlicense-green.svg?style=flat)
 
 [![CI](https://img.shields.io/github/actions/workflow/status/luanholiv/pointlurker/ci.yml?branch=main&logo=github&label=CI)](https://github.com/luanholiv/pointlurker/actions/workflows/ci.yml)
 [![Store API Probe](https://img.shields.io/github/actions/workflow/status/luanholiv/pointlurker/store-api-live-probe.yml?logo=github&label=store%20API%20probe)](https://github.com/luanholiv/pointlurker/actions/workflows/store-api-live-probe.yml)
