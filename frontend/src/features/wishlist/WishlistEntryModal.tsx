@@ -169,7 +169,6 @@ const WishlistEntryForm = ({
     <Modal
       open={true}
       onClose={onClose}
-      eyebrow={t("wishlist.modal.addEyebrow")}
       title={
         isEdit ? (
           <>

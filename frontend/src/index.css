@@ -993,7 +993,7 @@ textarea {
   font-size: var(--fs-heading);
   line-height: 1;
   letter-spacing: -0.01em;
-  margin: 6px 0 6px;
+  margin: 0 0 6px;
 }
 .modal-head p {
   margin: 0 0 12px;

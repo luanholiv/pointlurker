@@ -73,7 +73,6 @@ const MissingLabelDialog = ({
     <Modal
       open={true}
       onClose={onClose}
-      eyebrow={t("stores.missingLabels.eyebrow")}
       title={
         <>
           {t("stores.missingLabels.title")}{" "}

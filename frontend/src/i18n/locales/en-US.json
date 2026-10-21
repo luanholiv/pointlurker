@@ -100,7 +100,6 @@
     "syncLabel": "SYNC",
     "foundPill": "found",
     "addDialog": {
-      "eyebrow": "01 · ADD STORE",
       "titleEm": "store",
       "usernamePlaceholder": "e.g. xqc",
       "description": "Enter a StreamElements channel username. We'll verify and pull its current item list.",
@@ -134,7 +133,6 @@
       "removeError": "Failed to remove store"
     },
     "missingLabels": {
-      "eyebrow": "01 · STORE CREATED",
       "title": "Fill",
       "titleEm": "store profile",
       "description_one": "{{storeName}} has {{count}} input label without a stored value. Auto-redeem will block items requiring this label until filled.",
@@ -280,7 +278,6 @@
     "loadError": "Failed to load wishlist.",
     "synced": "Synced {{date}}",
     "modal": {
-      "addEyebrow": "02 · WISHLIST",
       "editTitle": "Edit",
       "editTitleEm": "entry",
       "addTitle": "Add to",
@@ -383,7 +380,6 @@
     "passwordSaved": "Password updated.",
     "updatePassword": "Update password",
     "savingPassword": "Saving…",
-    "authenticator": "Authenticator",
     "twoFactorHeading": "Two-factor auth",
     "twoFactorEnabled": "Two-factor is enabled.",
     "disable2FA": "Disable",
