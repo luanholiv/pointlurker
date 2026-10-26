@@ -82,8 +82,8 @@
     <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
     <!-- HTTP Clients -->
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.9.0" />
-    <PackageVersion Include="Refit" Version="15.2.0" />
-    <PackageVersion Include="Refit.HttpClientFactory" Version="15.2.0" />
+    <PackageVersion Include="Refit" Version="16.4.0" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="16.4.0" />
     <!-- Testing -->
     <PackageVersion Include="JunitXml.TestLogger" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
