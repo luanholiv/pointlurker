@@ -148,7 +148,7 @@ jobs:
         uses: snyk/actions/setup@9adf32b1121593767fc3c057af55b55db032dc04 # v1
         with:
           # renovate: datasource=github-releases depName=snyk/cli
-          snyk-version: v1.1308.0
+          snyk-version: v1.1308.2
 
       - name: Snyk container scan — backend (amd64)
         run: snyk container test ${{ env.BACKEND_IMAGE }}:v${{ inputs.version }}-amd64 --severity-threshold=high

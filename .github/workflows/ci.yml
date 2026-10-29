@@ -316,7 +316,7 @@ jobs:
         uses: snyk/actions/setup@9adf32b1121593767fc3c057af55b55db032dc04 # v1
         with:
           # renovate: datasource=github-releases depName=snyk/cli
-          snyk-version: v1.1308.0
+          snyk-version: v1.1308.2
 
       # `snyk code test` uploads source for static analysis and needs no toolchain at all,
       # so both SAST runs happen before the expensive .NET setup below.
