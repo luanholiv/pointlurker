@@ -51,6 +51,13 @@ one job means one Snyk setup and one red check, and per-job billing rounds up to
 minute. It produces nothing and gates everything — the shape `gitleaks` and
 `hadolint` also use.
 
+Every repository-scoped command (`snyk test`, `snyk code test`) passes
+`--remote-repo-url`, built from `github.server_url` and `github.repository`. The
+repository is public, and public repositories test without limit on Snyk's Free
+plan, but a CLI scan carries no proof of where it came from: without the flag each
+one is billed to the private-test quota. `snyk container test` has no such flag, so
+`cd.yml`'s image scans still count against the Container quota — once per release.
+
 Every `if:` inside it is **step level, never job level**: `release` needs this job,
 and a skipped job skips its dependents, so a job-level guard would silently skip
 releases on single-stack changes.
