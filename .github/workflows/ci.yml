@@ -306,6 +306,10 @@ jobs:
     needs: path-filter
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      # A CLI scan carries no proof of origin, so Snyk bills it to the private-test quota
+      # unless told which public repository it came from. Public repositories test free.
+      SNYK_REMOTE_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
 
     steps:
       - name: Checkout
@@ -322,14 +326,14 @@ jobs:
       # so both SAST runs happen before the expensive .NET setup below.
       - name: Snyk SAST (backend)
         if: needs.path-filter.outputs.backend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
-        run: snyk code test --all-projects
+        run: snyk code test --all-projects --remote-repo-url="$SNYK_REMOTE_REPO_URL"
         working-directory: backend
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
       - name: Snyk SAST (frontend)
         if: needs.path-filter.outputs.frontend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
-        run: snyk code test
+        run: snyk code test --remote-repo-url="$SNYK_REMOTE_REPO_URL"
         working-directory: frontend
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -375,7 +379,7 @@ jobs:
 
       - name: Snyk SCA (backend)
         if: needs.path-filter.outputs.backend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
-        run: snyk test --all-projects
+        run: snyk test --all-projects --remote-repo-url="$SNYK_REMOTE_REPO_URL"
         working-directory: backend
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -385,7 +389,7 @@ jobs:
       # by nothing before.
       - name: Snyk SCA (frontend and root manifests)
         if: needs.path-filter.outputs.frontend == 'true' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
-        run: snyk test --all-projects --exclude=backend
+        run: snyk test --all-projects --exclude=backend --remote-repo-url="$SNYK_REMOTE_REPO_URL"
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
