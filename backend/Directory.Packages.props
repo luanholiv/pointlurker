@@ -6,28 +6,28 @@
   <ItemGroup>
     <!-- ASP.NET Core -->
     <PackageVersion Include="Cronos" Version="0.13.0" />
-    <PackageVersion Include="CsCheck" Version="4.9.1" />
+    <PackageVersion Include="CsCheck" Version="5.0.1" />
     <PackageVersion Include="FluentValidation" Version="12.2.0" />
     <PackageVersion Include="FuzzySharp" Version="2.0.2" />
-    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.13" />
-    <PackageVersion Include="Microsoft.AspNetCore.DataProtection" Version="10.0.13" />
-    <PackageVersion Include="Microsoft.AspNetCore.DataProtection.Extensions" Version="10.0.13" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.DataProtection" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.DataProtection.Extensions" Version="11.0.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Identity" Version="2.3.13" />
-    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.13" />
-    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.13" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.13" />
-    <PackageVersion Include="Microsoft.AspNetCore.SpaProxy" Version="10.0.13" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.13" />
-    <PackageVersion Include="Microsoft.Extensions.Localization" Version="10.0.13" />
-    <PackageVersion Include="MailKit" Version="4.18.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.SpaProxy" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Localization" Version="11.0.0" />
+    <PackageVersion Include="MailKit" Version="5.0.0" />
     <!-- Entity Framework Core -->
-    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.13" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.13">
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="11.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="11.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageVersion>
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.13" />
-    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="11.0.0" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="11.0.0" />
     <!--
       Security overrides (transitive version pins).
 
@@ -78,19 +78,19 @@
       release. A range that loosens, or a DataProtection version pointing below it, is what puts
       the floor back on this pin — which is why it is kept rather than dropped on one release.
     -->
-    <PackageVersion Include="System.Security.Cryptography.Xml" Version="10.0.13" />
-    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
+    <PackageVersion Include="System.Security.Cryptography.Xml" Version="11.0.0" />
+    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="11.0.0" />
     <!-- HTTP Clients -->
-    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.11.0" />
-    <PackageVersion Include="Refit" Version="16.4.0" />
-    <PackageVersion Include="Refit.HttpClientFactory" Version="16.4.0" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="11.0.1" />
+    <PackageVersion Include="Refit" Version="17.0.0" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="17.0.0" />
     <!-- Testing -->
     <PackageVersion Include="JunitXml.TestLogger" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageVersion>
     <PackageVersion Include="FluentAssertions" Version="7.2.2" />
-    <PackageVersion Include="Microsoft.Extensions.TimeProvider.Testing" Version="10.11.0" />
+    <PackageVersion Include="Microsoft.Extensions.TimeProvider.Testing" Version="11.0.1" />
     <PackageVersion Include="NetArchTest.Rules" Version="1.3.2" />
     <PackageVersion Include="WireMock.Net.Minimal" Version="2.19.0" />
     <PackageVersion Include="NSubstitute" Version="6.2.0" />
